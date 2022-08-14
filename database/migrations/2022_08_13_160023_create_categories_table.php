@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('category_name');
             $table->timestamps();
+            $table->string('status')->default(1);
             $table->softDeletes();
         });
     }
