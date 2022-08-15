@@ -5,7 +5,7 @@
     <div class="content-wrapper">
         <div class="fix-top">
             <a href="{{ route('Dashboard') }}"><i class="zmdi zmdi-view-dashboard mr-2"></i>Dashboard/</a>
-            <span>{{ $last }}</span>
+            <span class="text-capitalize">{{ $last }}</span>
         </div>
         <div class="container-fluid mt-5">
             <div class="overlay toggle-menu"></div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,9 @@ require __DIR__.'/auth.php';
 */
 Route::get('dashboard', [DashboardController::class, 'Dashboard'])->name('Dashboard');
 /*
-| Dashboard Routes
+|--------------------------------------------------------------------------
+|                    Category Routes
+|--------------------------------------------------------------------------
 */
 Route::get('category', [CategoryController::class, 'Category'])->name('Category');
 Route::POST('category-post', [CategoryController::class, 'CategoryPost'])->name('CategoryPost');
@@ -33,3 +36,18 @@ Route::POST('category-update', [CategoryController::class, 'CategoryUpdate'])->n
 Route::get('cat-trash-list', [CategoryController::class, 'CatTrashList'])->name('CatTrashList');
 Route::get('cat-reset/{id}', [CategoryController::class, 'CategoryReset'])->name('CategoryReset');
 Route::get('delete-permanently/{id}', [CategoryController::class, 'DelPermanently'])->name('DelPermanently');
+/*
+|--------------------------------------------------------------------------
+|                 SubCategory Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('subcategory', [SubCategoryController::class, 'SubCategory'])->name('SubCategory');
+Route::POST('subcategory-post', [SubCategoryController::class, 'SubCategoryPost'])->name('SubCategoryPost');
+Route::get('subcategory-list', [SubCategoryController::class, 'SubCategoryList'])->name('SubCategoryList');
+Route::get('subcattrash-list', [SubCategoryController::class, 'SubCatTrashList'])->name('SubCatTrashList');
+Route::get('ststus/{id}', [SubCategoryController::class, 'ChangeStatus'])->name('ChangeStatus');
+Route::get('subcategory-edit/{id}', [SubCategoryController::class, 'SubCategoryEdit'])->name('SubCategoryEdit');
+Route::POST('subcategory-update', [SubCategoryController::class, 'SubCategoryUpdate'])->name('SubCategoryUpdate');
+Route::get('subcategory-delete/{id}', [SubCategoryController::class, 'SubCategoryDelete'])->name('SubCategoryDelete');
+Route::get('cat-reset/{id}', [SubCategoryController::class, 'SubCategoryReset'])->name('SubCategoryReset');
+Route::get('delete-permanently/{id}', [SubCategoryController::class, 'SubCategoryPDelete'])->name('SubCategoryPDelete');

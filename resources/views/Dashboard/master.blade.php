@@ -50,23 +50,36 @@
                     </a>
                 </li>
 
-
-                <div class="mt-2 mb-2">
-                    <div class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-card-travel ml-3 mr-3"
-                            style="font-size: 18px"></i><span>Category</span></div>
-
-                    <li class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('Category') }}">Category Add</a>
-                        <a class="dropdown-item" href="{{ route('CategoryList') }}">Category List</a>
-                        <a class="dropdown-item" href="{{ route('CatTrashList') }}">Category Trash List</a>
-                    </li>
-                </div>
+                <li>
+                    <a href="#Category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="zmdi zmdi-card-travel" style="font-size: 18px"></i>Category</a>
+                    <ul class="collapse list-unstyled" id="Category">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('Category') }}">Category Add</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('CategoryList') }}">Category List</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('CatTrashList') }}">Category Trash List</a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li>
-                    <a href="icons.html">
-                        <i class="zmdi zmdi-invert-colors"></i> <span>UI Icons</span>
-                    </a>
+                    <a href="#SubCategory" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="zmdi zmdi-case-check" style="font-size: 18px"></i><span>Sub Category</a>
+                    <ul class="collapse list-unstyled" id="SubCategory">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('SubCategory') }}">Add SubCategory</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('SubCategoryList') }}">SubCategory List</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('SubCatTrashList') }}">SubCategory Trash List</a>
+                        </li>
+                    </ul>
                 </li>
+
 
                 <li>
                     <a href="forms.html">
@@ -260,7 +273,8 @@
     <!-- Index js -->
     <script src="{{ asset('assets/js/index.js') }}"></script>
 
-
+    <!-- Slug -->
+    @yield('slug')
 </body>
 
 </html>

@@ -10,9 +10,9 @@
             <span class="text-capitalize">{{ $last }}</span>
         </div>
         <div class="card-body rounded" style="border:1px solid #9DBEF2">
-            <h5 class="card-title text-center">Category List({{ $count }})</h5>
+            <h5 class="card-title text-center">SubCategory List({{ $count }})</h5>
             <div class="text-right">
-                <a href="{{ route('Category') }}"><i class="fa fa-plus"></i> Add</a>
+                <a href="{{ route('SubCategory') }}"><i class="fa fa-plus"></i> Add</a>
             </div>
 
             @if(session()->has('message'))
@@ -29,16 +29,18 @@
                         <tr class="text-center">
                             <th>SL</th>
                             <th>Category Name</th>
+                            <th>SubCategory Name</th>
                             <th>Created AT</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    @foreach ($category as $key=> $items)
+                    @foreach ($subcat as $key=> $items)
                     <tbody>
                         <tr class="text-center">
-                            <td>{{ $category->firstItem() +$key}}</td>
-                            <td>{{ $items->category_name }}</td>
+                            <td>{{ $subcat->firstItem() +$key}}</td>
+                            <td>{{ $items->category->category_name }}</td>
+                            <td>{{ $items->subcategory_name }}</td>
                             <td>{{ $items->created_at !=null ? $items->created_at->diffForHumans():'N/A' }}</td>
                             <td>
                                 @if ($items->status==1)
@@ -49,8 +51,8 @@
                             </td>
                             <td>
                                 @if ($items->status==1)
-                                    <a href="{{ route('CategoryEdit',$items->id) }}" class="btn btn-outline-secondary">Edit</a>
-                                    <a href="{{ route('CategoryDelete',$items->id) }}" class="btn btn-outline-danger">Delete</a>
+                                    <a href="{{ route('SubCategoryEdit',$items->id) }}" class="btn btn-outline-secondary">Edit</a>
+                                    <a href="{{ route('SubCategoryDelete',$items->id) }}" class="btn btn-outline-danger">Delete</a>
                                 @else
                                     <a class="btn btn-outline-danger">Not Allow</a>
                                 @endif
