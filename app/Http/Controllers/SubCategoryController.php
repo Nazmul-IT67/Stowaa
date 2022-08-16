@@ -46,19 +46,12 @@ class SubCategoryController extends Controller
         $request->validate([
             'subcategory_name'=>['required', 'unique:sub_categories'],
         ]);
-        // SubCategory::findOrFail($request->subcategory_id)->update([
-        //     'subcategory_name'=>$request->subcategory_name,
-        //     'category_id'=>$request->category_id,
-        //     'slug'=>Str::slug($request->subcategory_name),
-        //     'updated_at'=>Carbon::now(),
-        // ]);
-
         $subcategory=SubCategory::findOrFail($request->subcategory_id);
         $subcategory->subcategory_name=$request->subcategory_name;
         $subcategory->category_id=$request->category_id;
         $subcategory->slug=Str::slug($request->subcategory_name);
         $subcategory->save();
-        return redirect('category-list')->with('message', 'SubCategory Update Successfull');
+        return redirect('subcategory-list')->with('message', 'SubCategory Update Successfull');
     }
 
     function SubCategoryList(){

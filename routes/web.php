@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Controllers\BrandsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ColorsController;
+use App\Http\Controllers\SizeController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\ProductsController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +57,22 @@ Route::POST('subcategory-update', [SubCategoryController::class, 'SubCategoryUpd
 Route::get('subcategory-delete/{id}', [SubCategoryController::class, 'SubCategoryDelete'])->name('SubCategoryDelete');
 Route::get('cat-reset/{id}', [SubCategoryController::class, 'SubCategoryReset'])->name('SubCategoryReset');
 Route::get('delete-permanently/{id}', [SubCategoryController::class, 'SubCategoryPDelete'])->name('SubCategoryPDelete');
+/*
+|--------------------------------------------------------------------------
+|                Product Attribute
+|--------------------------------------------------------------------------
+*/
+Route::get('add-brand',[BrandsController::class, 'Brand'])->name('Brand');
+Route::POST('brand-post',[BrandsController::class, 'BrandPost'])->name('BrandPost');
+Route::get('add-color',[ColorsController::class, 'Color'])->name('Color');
+Route::POST('color-post',[ColorsController::class, 'ColorPost'])->name('ColorPost');
+Route::get('add-size',[SizeController::class, 'Size'])->name('Size');
+Route::POST('size-post',[SizeController::class, 'SizePost'])->name('SizePost');
+/*
+|--------------------------------------------------------------------------
+|                Product Attribute
+|--------------------------------------------------------------------------
+*/
+Route::get('add-product',[ProductsController::class, 'AddProduct'])->name('AddProduct');
+Route::get('all-product',[ProductsController::class, 'ProductList'])->name('ProductList');
+Route::get('trash-product',[ProductsController::class, 'TrashProduct'])->name('TrashProduct');

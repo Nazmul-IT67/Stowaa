@@ -11,6 +11,7 @@
     <!-- loader-->
     <link href="{{ asset('assets/css/pace.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/js/pace.min.js') }}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <!--favicon-->
     <link rel="icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
     <!-- Vector CSS -->
@@ -27,7 +28,6 @@
     <link href="{{ asset('assets/css/sidebar-menu.css') }}" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="{{ asset('assets/css/app-style.css') }}" rel="stylesheet" />
-
 </head>
 
 <body class="bg-theme bg-theme1">
@@ -80,6 +80,36 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="#Product" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="zmdi zmdi-flattr" style="font-size: 17px"></i><span>Products</a>
+                    <ul class="collapse list-unstyled" id="Product">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('AddProduct') }}">Add Product</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('ProductList') }}">Product List</a>
+                        </li>
+                        <li>
+                           <a class="dropdown-item" href="{{ route('TrashProduct') }}">Trash Product</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#attributes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="zmdi zmdi-group" style="font-size: 16px"></i><span>Product Attributes</a>
+                    <ul class="collapse list-unstyled" id="attributes">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('Brand') }}">Product Brands</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('Color') }}">Product Color</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('Size') }}">Product Size</a>
+                        </li>
+                    </ul>
+                </li>
+
 
                 <li>
                     <a href="forms.html">
@@ -107,13 +137,13 @@
                 </li>
 
                 <li>
-                    <a href="login.html" target="_blank">
+                    <a href="#" target="_blank">
                         <i class="zmdi zmdi-lock"></i> <span>Login</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="register.html" target="_blank">
+                    <a href="#" target="_blank">
                         <i class="zmdi zmdi-account-circle"></i> <span>Registration</span>
                     </a>
                 </li>
