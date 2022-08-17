@@ -12,6 +12,7 @@ use App\Models\Size;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
+use PHPUnit\Framework\Constraint\Count;
 
 class ProductsController extends Controller
 {
@@ -20,23 +21,56 @@ class ProductsController extends Controller
         $last=Str::of($last_value)->replace('-','');
         return view('Backend.Products.add-product',[
             'last'=>$last,
-            'categorys'=>Category::all(),
-            // 'subcategorys'=>SubCategory::all(),
-            'brand'=>Brands::all(),
-            'color'=>Colors::all(),
-            'size'=>Size::all(),
+            'categories'=>Category::orderBy('category_name', 'asc')->get(),
+            'brand'=>Brands::orderBy('brand_name', 'asc')->get(),
+        ]);
+    }
+
+    function SubCat($id){
+        $sub_cat=SubCategory::where('category_id', $id)->get();
+        return response()->json($sub_cat);
+    }
+
+    function ProductPost(Request $request){
+        $request->validate([
+            'product_title'=>['required', 'unique:products'],
+            'slug'=>['required'],
+            'summery'=>['required'],
+            'description'=>['required'],
+            'price'=>['required'],
+            'thumbnail'=>['required','image'],
+        ]);
+        $product=new Products();
+        $product->product_title=$request->product_title;
+        $product->slug=$request->slug;
+        $product->category_id=$request->category_id;
+        $product->subcategory_id=$request->subcategory_id;
+        $product->brand_id=$request->brand_id;
+        $product->summery=$request->summery;
+        $product->description=$request->description;
+        $product->price=$request->price;
+        $product->save();
+
+        if($request->hasFile('thumbnail')){
+            $image=$request->file('thumbnail');
+            $ext=$request->product_title.'.'.$image->getClientOriginalExtension();
+            $new=Products::findOrFail($product->id);
+            $location=public_path('Product/Thumbnail/'.$new->created_at->format('Y/m/').$new->id.'/');
+            File::makeDirectory($location, $mode=0777, true, true);
+            Image::make($image)->save($location.$ext);
+            $new->thumbnail=$ext;
+            $new->save();
+        };
+        return redirect('product-list')->with('message', 'Product Add Successfull!');
+    }
+
+    function ProductList(){
+        $last_value=collect(request()->segments())->last();
+        $last=Str::of($last_value)->replace('-','');
+        return view('Backend.Products.product-list',[
+            'last'=>$last,
+            'count'=>$count=Products::count(),
+            'product'=>Products::orderBy('product_title','asc')->paginate(),
         ]);
     }
 }
-// product_title
-// slug
-// category_id
-// subcategory_id
-// brand_id
-// color_id
-// size_id
-// summery
-// description
-// price
-// thumbnail
-// status

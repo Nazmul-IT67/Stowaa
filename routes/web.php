@@ -74,5 +74,8 @@ Route::POST('size-post',[SizeController::class, 'SizePost'])->name('SizePost');
 |--------------------------------------------------------------------------
 */
 Route::get('add-product',[ProductsController::class, 'AddProduct'])->name('AddProduct');
+Route::POST('product-post',[ProductsController::class, 'ProductPost'])->name('ProductPost');
 Route::get('all-product',[ProductsController::class, 'ProductList'])->name('ProductList');
 Route::get('trash-product',[ProductsController::class, 'TrashProduct'])->name('TrashProduct');
+Route::get('sub-cat/{id}', [ProductsController::class, 'SubCat'])->name('SubCat');
+Route::get('product-list', [ProductsController::class, 'ProductList'])->name('ProductList');
