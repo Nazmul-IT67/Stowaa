@@ -73,4 +73,15 @@ class ProductsController extends Controller
             'product'=>Products::orderBy('product_title','asc')->paginate(),
         ]);
     }
+
+    function ChangeStatus($id){
+        $getstatus=Products::select('status')->where('id',$id)->first();
+        if($getstatus->status==1){
+            $status=0;
+        }else{
+            $status=1;
+        }
+        Products::where('id',$id)->update(['status'=>$status]);
+        return redirect('product-list')->with('message', 'Status Change Successfull');
+    }
 }

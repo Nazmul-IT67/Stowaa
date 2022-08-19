@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
@@ -8,7 +9,7 @@ use App\Http\Controllers\ColorsController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductsController;
-
+use App\Http\Controllers\FrontendController;
 
 
 /*
@@ -27,6 +28,15 @@ require __DIR__.'/auth.php';
 |--------------------------------------------------------------------------
 */
 Route::get('dashboard', [DashboardController::class, 'Dashboard'])->name('Dashboard');
+
+/*
+|--------------------------------------------------------------------------
+|                Fontend Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/',[FrontendController::class, 'Fontend'])->name('Fontend');
+Route::get('single-product/{slug}',[FrontendController::class, 'SingleProduct'])->name('SingleProduct');
+Route::get('product-page',[FrontendController::class, 'ProductPage'])->name('ProductPage');
 /*
 |--------------------------------------------------------------------------
 |                    Category Routes
@@ -70,7 +80,7 @@ Route::get('add-size',[SizeController::class, 'Size'])->name('Size');
 Route::POST('size-post',[SizeController::class, 'SizePost'])->name('SizePost');
 /*
 |--------------------------------------------------------------------------
-|                Product Attribute
+|                Product Routes
 |--------------------------------------------------------------------------
 */
 Route::get('add-product',[ProductsController::class, 'AddProduct'])->name('AddProduct');
@@ -79,3 +89,10 @@ Route::get('all-product',[ProductsController::class, 'ProductList'])->name('Prod
 Route::get('trash-product',[ProductsController::class, 'TrashProduct'])->name('TrashProduct');
 Route::get('sub-cat/{id}', [ProductsController::class, 'SubCat'])->name('SubCat');
 Route::get('product-list', [ProductsController::class, 'ProductList'])->name('ProductList');
+Route::get('ststus/{id}', [ProductsController::class, 'ChangeStatus'])->name('ChangeStatus');
+/*
+|--------------------------------------------------------------------------
+|                Product Cart Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('single-cart/{slug}',[CartController::class,'SingleCart'])->name('SingleCart');

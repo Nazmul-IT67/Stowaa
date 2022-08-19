@@ -43,9 +43,9 @@
                             <tr class="text-center">
                                 <td>{{ $product->firstItem() + $key }}</td>
                                 <td>{{ $items->product_title }}</td>
-                                <td>{{ $items->category_id }}</td>
-                                <td>{{ $items->subcategory_id }}</td>
-                                <td> <img src="{{ asset('Product/Thumbnail/'.$items->created_at->format('Y/m/').$items->id.'/'.$items->thumbnail) }}" alt="" width="70"></td>
+                                <td>{{ $items->category->category_name }}</td>
+                                <td>{{ $items->subcategory->subcategory_name }}</td>
+                                <td> <img src="{{ asset('Product/Thumbnail/'.$items->created_at->format('Y/m/').$items->id.'/'.$items->thumbnail) }}" alt="" class="img-fluid"></td>
                                 <td>{{ $items->created_at != null ? $items->created_at->diffForHumans() : 'N/A' }}</td>
                                 <td>
                                     @if ($items->status == 1)
@@ -58,12 +58,12 @@
                                 </td>
                                 <td>
                                     @if ($items->status == 1)
-                                        <a href="{{ route('SubCategoryEdit', $items->id) }}"
+                                        <a href="#"
                                             class="btn btn-outline-secondary">Edit</a>
-                                        <a href="{{ route('SubCategoryDelete', $items->id) }}"
+                                        <a href="#"
                                             class="btn btn-outline-danger">Delete</a>
                                     @else
-                                        <a class="btn btn-outline-danger">Not Allow</a>
+                                        <a class="btn btn-outline-light">Not Allow</a>
                                     @endif
                                 </td>
                             </tr>
