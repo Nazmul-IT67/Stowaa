@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sliders', function (Blueprint $table) {
+        Schema::create('carts', function (Blueprint $table) {
             $table->id();
+            $table->string('cookie_id');
+            $table->foreignId('product_id');
+            $table->foreignId('color_id')->nullable();
+            $table->foreignId('size_id')->nullable();
+            $table->string('quantity')->default(1);
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sliders');
+        Schema::dropIfExists('carts');
     }
 };

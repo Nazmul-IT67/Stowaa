@@ -1,4 +1,7 @@
 @extends('Frontend.main')
+@section('Shop')
+    active
+@endsection
 @section('index')
     <!-- breadcrumb_section - start
                 ================================================== -->

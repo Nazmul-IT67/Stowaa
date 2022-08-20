@@ -37,6 +37,7 @@ Route::get('dashboard', [DashboardController::class, 'Dashboard'])->name('Dashbo
 Route::get('/',[FrontendController::class, 'Fontend'])->name('Fontend');
 Route::get('single-product/{slug}',[FrontendController::class, 'SingleProduct'])->name('SingleProduct');
 Route::get('product-page',[FrontendController::class, 'ProductPage'])->name('ProductPage');
+
 /*
 |--------------------------------------------------------------------------
 |                    Category Routes
@@ -95,4 +96,5 @@ Route::get('ststus/{id}', [ProductsController::class, 'ChangeStatus'])->name('Ch
 |                Product Cart Routes
 |--------------------------------------------------------------------------
 */
-Route::get('single-cart/{slug}',[CartController::class,'SingleCart'])->name('SingleCart');
+Route::get('single/cart/{slug}',[CartController::class,'SingleCart'])->name('SingleCart');
+Route::get('cart-page',[CartController::class, 'CartPage'])->name('CartPage');

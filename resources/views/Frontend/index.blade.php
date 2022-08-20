@@ -1,75 +1,9 @@
 @extends('Frontend.main')
+@section('Fontend')
+    active
+@endsection
 @section('index')
     <main>
-
-        <!-- sidebar cart - start
-                ================================================== -->
-        <div class="sidebar-menu-wrapper">
-            <div class="cart_sidebar">
-                <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
-                <ul class="cart_items_list ul_li_block mb_30 clearfix">
-                    <li>
-                        <div class="item_image">
-                            <img src="fontend/assets/images/cart/cart_img_1.jpg" alt="image_not_found">
-                        </div>
-                        <div class="item_content">
-                            <h4 class="item_title">Yellow Blouse</h4>
-                            <span class="item_price">$30.00</span>
-                        </div>
-                        <button type="button" class="remove_btn"><i class="fal fa-trash-alt"></i></button>
-                    </li>
-                    <li>
-                        <div class="item_image">
-                            <img src="fontend/assets/images/cart/cart_img_2.jpg" alt="image_not_found">
-                        </div>
-                        <div class="item_content">
-                            <h4 class="item_title">Yellow Blouse</h4>
-                            <span class="item_price">$30.00</span>
-                        </div>
-                        <button type="button" class="remove_btn"><i class="fal fa-trash-alt"></i></button>
-                    </li>
-                    <li>
-                        <div class="item_image">
-                            <img src="fontend/assets/images/cart/cart_img_3.jpg" alt="image_not_found">
-                        </div>
-                        <div class="item_content">
-                            <h4 class="item_title">Yellow Blouse</h4>
-                            <span class="item_price">$30.00</span>
-                        </div>
-                        <button type="button" class="remove_btn"><i class="fal fa-trash-alt"></i></button>
-                    </li>
-                </ul>
-
-                <ul class="total_price ul_li_block mb_30 clearfix">
-                    <li>
-                        <span>Subtotal:</span>
-                        <span>$90</span>
-                    </li>
-                    <li>
-                        <span>Vat 5%:</span>
-                        <span>$4.5</span>
-                    </li>
-                    <li>
-                        <span>Discount 20%:</span>
-                        <span>- $18.9</span>
-                    </li>
-                    <li>
-                        <span>Total:</span>
-                        <span>$75.6</span>
-                    </li>
-                </ul>
-
-                <ul class="btns_group ul_li_block clearfix">
-                    <li><a class="btn btn_primary" href="cart.html">View Cart</a></li>
-                    <li><a class="btn btn_secondary" href="checkout.html">Checkout</a></li>
-                </ul>
-            </div>
-
-            <div class="cart_overlay"></div>
-        </div>
-        <!-- sidebar cart - end
-                ================================================== -->
-
 
         <!-- product quick view modal - start-->
         @foreach ($products as $product)
@@ -161,7 +95,7 @@
                                                 </div>
 
                                                 <ul class="default_btns_group ul_li">
-                                                    <li><a class="addtocart_btn" href="#!">Add To Cart</a></li>
+                                                    <li><a class="addtocart_btn" href="#">Add To Cart</a></li>
                                                     <li><a href="#!"><i class="far fa-compress-alt"></i></a></li>
                                                     <li><a href="#!"><i class="fas fa-heart"></i></a></li>
                                                 </ul>
@@ -408,7 +342,7 @@
                                                 </ins>
                                             </span>
                                             <div class="add-cart-area">
-                                                <button class="add-to-cart">Add to cart</button>
+                                                <a class="btn btn-outline-secondary" style="padding-left: 70px;padding-right: 70px; border-radius:5px; color:black" href="{{ route('SingleCart',$product->slug) }}">Add To Cart</a>
                                             </div>
                                         </div>
                                     </div>

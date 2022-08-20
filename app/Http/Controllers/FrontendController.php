@@ -7,6 +7,7 @@ use App\Models\Frontend;
 use App\Models\Products;
 use App\Models\Colors;
 use App\Models\Size;
+use App\Models\Cart;
 
 class FrontendController extends Controller
 {
@@ -33,4 +34,5 @@ class FrontendController extends Controller
             'size'=>Size::all(),
         ]);
     }
+
 }

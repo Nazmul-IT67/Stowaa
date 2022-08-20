@@ -56,7 +56,55 @@
         <!-- preloader - start -->
         <div id="preloader"></div>
         <!-- preloader - end -->
+        <!-- sidebar cart - start
+                ================================================== -->
+                <div class="sidebar-menu-wrapper">
+                    <div class="cart_sidebar">
+                        <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
+                        <ul class="cart_items_list ul_li_block mb_30 clearfix">
+                            @foreach (cart() as $crt)
+                            <li>
+                                <div class="item_image">
+                                    <img src="{{ asset('Product/Thumbnail/' . $crt->product->created_at->format('Y/m/') . $crt->product->id . '/' . $crt->product->thumbnail) }}" alt="image_not_found">
+                                </div>
+                                <div class="item_content">
+                                    <h4 class="item_title">{{ $crt->product->product_title }}</h4>
+                                    <span class="item_price">${{ $crt->product->price }}</span>
+                                </div>
+                                <button type="button" class="remove_btn"><i class="fal fa-trash-alt"></i></button>
+                            </li>
+                            @endforeach
+                        </ul>
 
+                        <ul class="total_price ul_li_block mb_30 clearfix">
+                            <li>
+                                <span>Subtotal:</span>
+                                <span>${{ $crt->product->price+$crt->quantity  }}</span>
+                            </li>
+                            <li>
+                                <span>Vat 5%:</span>
+                                <span>$4.5</span>
+                            </li>
+                            <li>
+                                <span>Discount 20%:</span>
+                                <span>- $18.9</span>
+                            </li>
+                            <li>
+                                <span>Total:</span>
+                                <span>$75.6</span>
+                            </li>
+                        </ul>
+
+                        <ul class="btns_group ul_li_block clearfix">
+                            <li><a class="btn btn_primary" href="{{ route('CartPage') }}">View Cart</a></li>
+                            <li><a class="btn btn_secondary" href="checkout.html">Checkout</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="cart_overlay"></div>
+                </div>
+                <!-- sidebar cart - end
+                        ================================================== -->
 
         <!-- header_section - start
         ================================================== -->
@@ -124,6 +172,7 @@
                                 </div>
                             </form>
                         </div>
+
                         <div class="col col-lg-3 col-md-3 col-sm-12">
                             <button class="mobile_menu_btn2 navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#main_menu_dropdown" aria-controls="main_menu_dropdown"
@@ -148,7 +197,7 @@
                                     <li>
                                         <span class="cart_icon">
                                             <i class="icon icon-ShoppingCart"></i>
-                                            <small class="cart_counter">3</small>
+                                            <small class="cart_counter">{{ $crt->count() }}</small>
                                         </span>
                                     </li>
                                 </ul>
@@ -206,9 +255,10 @@
                                         <i class="fal fa-times"></i>
                                     </button>
                                     <ul class="main_menu_list ul_li">
-                                        <li><a class="nav-link" href="{{ route('Fontend') }}">Home</a></li>
+                                        <li class="@yield('Fontend')"><a class="nav-link" href="{{ route('Fontend') }}">Home</a></li>
                                         <li><a class="nav-link" href="#">About us</a></li>
-                                        <li><a class="nav-link" href="{{ route('ProductPage') }}">Shop</a></li>
+                                        <li class="@yield('Shop')"><a class="nav-link" href="{{ route('ProductPage') }}">Shop</a></li>
+                                        <li class="@yield('Cart')"><a class="nav-link" href="{{ route('CartPage') }}">Cart</a></li>
                                         <li><a class="nav-link" href="#">Contact Us</a></li>
                                     </ul>
                                 </div>
