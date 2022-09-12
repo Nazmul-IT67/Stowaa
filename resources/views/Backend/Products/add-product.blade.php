@@ -38,19 +38,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="brand_id">Product Brand</label>
-                        <select class="form-control" name="brand_id" id="brand_id">
-                            <option value="0">-- Select Brand --</option>
-                            @foreach ($brand as $value)
-                                <option value="{{ $value->id }}">{{ $value->brand_name }}</option>
-                            @endforeach
-                        </select>
-                        @error('brand_id')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
                         <label for="product_title">Product Title</label>
                         <input type="text" name="product_title" class="form-control @error('product_title') is-invalid @enderror" id="product_title" value="{{ old('product_title') }}" placeholder="Product Title">
                         @error('product_title')
@@ -93,6 +80,11 @@
                     <div class="form-group">
                         <label for="thumbnail">Product Image</label>
                         <input type="file" name="thumbnail" class="form-control" id="thumbnail">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="thumbnail">Product Gallery</label>
+                        <input multiple type="file" id="product_image" name="image[]" class="form-control">
                     </div>
 
                     <div class="form-group">

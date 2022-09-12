@@ -6,13 +6,11 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\SubCategory;
-use App\Models\Brands;
-use App\Models\Colors;
-use App\Models\Size;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Constraint\Count;
+use App\Models\ProductGallery;
 
 class ProductsController extends Controller
 {
@@ -22,7 +20,6 @@ class ProductsController extends Controller
         return view('Backend.Products.add-product',[
             'last'=>$last,
             'categories'=>Category::orderBy('category_name', 'asc')->get(),
-            'brand'=>Brands::orderBy('brand_name', 'asc')->get(),
         ]);
     }
 
@@ -61,6 +58,20 @@ class ProductsController extends Controller
             $new->thumbnail=$ext;
             $new->save();
         };
+        // Miltiple Images
+        if($request->hasFile('image')){
+            $images=$request->file('image');
+            foreach($images as $image){
+                $img_ext=$request->title.Str::random(3).'.'.$image->getClientOriginalExtension();
+                $path=public_path('Product/Gallerys/'.$product->created_at->format('Y/m/').$product->id.'/');
+                File::makeDirectory($path, $mode=0777, true, true);
+                Image::make($image)->save($path.$img_ext);
+                $img=new ProductGallery;
+                $img->product_gallery=$img_ext;
+                $img->product_id=$product->id;
+                $img->save();
+            }
+        }
         return redirect('product-list')->with('message', 'Product Add Successfull!');
     }
 

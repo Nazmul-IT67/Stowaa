@@ -95,22 +95,6 @@
                 </li>
 
                 <li>
-                    <a href="#attributes" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="zmdi zmdi-group" style="font-size: 16px"></i><span>Product Attributes</a>
-                    <ul class="collapse list-unstyled" id="attributes">
-                        <li>
-                            <a class="dropdown-item" href="{{ route('Brand') }}">Product Brands</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="{{ route('Color') }}">Product Color</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="{{ route('Size') }}">Product Size</a>
-                        </li>
-                    </ul>
-                </li>
-
-
-                <li>
                     <a href="forms.html">
                         <i class="zmdi zmdi-format-list-bulleted"></i> <span>Forms</span>
                     </a>

@@ -31,6 +31,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $total=0;
+                        @endphp
                         @foreach ($carts as $cart)
                             <tr>
                                 <td>
@@ -53,6 +56,9 @@
                                         </div>
                                     </form>
                                 </td>
+                                @php
+                                    $total +=($cart->product->price*$cart->quantity);
+                                @endphp
                                 <td class="text-center"><span class="price_text">${{ $cart->product->price*$cart->quantity  }}</span></td>
                                 <td class="text-center">
                                     <button type="button" class="remove_btn">
@@ -115,15 +121,12 @@
                         <ul class="ul_li_block">
                             <li>
                                 <span>Cart Subtotal</span>
-                                <span>$52.50</span>
+                                <span>${{ $total }}</span>
                             </li>
-                            <li>
-                                <span>Delivery Charge</span>
-                                <span>$5</span>
-                            </li>
+
                             <li>
                                 <span>Order Total</span>
-                                <span class="total_price">$57.50</span>
+                                <span class="total_price">${{ $total }}</span>
                             </li>
                         </ul>
                     </div>

@@ -61,6 +61,9 @@
                 <div class="sidebar-menu-wrapper">
                     <div class="cart_sidebar">
                         <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
+                        @php
+                            $total=0;
+                        @endphp
                         <ul class="cart_items_list ul_li_block mb_30 clearfix">
                             @foreach (cart() as $crt)
                             <li>
@@ -71,6 +74,9 @@
                                     <h4 class="item_title">{{ $crt->product->product_title }}</h4>
                                     <span class="item_price">${{ $crt->product->price }}</span>
                                 </div>
+                                @php
+                                    $total +=($crt->product->price*$crt->quantity);
+                                @endphp
                                 <button type="button" class="remove_btn"><i class="fal fa-trash-alt"></i></button>
                             </li>
                             @endforeach
@@ -79,7 +85,7 @@
                         <ul class="total_price ul_li_block mb_30 clearfix">
                             <li>
                                 <span>Subtotal:</span>
-                                <span>${{ $crt->product->price+$crt->quantity  }}</span>
+                                <span>${{ $total }}</span>
                             </li>
                             <li>
                                 <span>Vat 5%:</span>
@@ -91,7 +97,7 @@
                             </li>
                             <li>
                                 <span>Total:</span>
-                                <span>$75.6</span>
+                                <span>${{ $total }}</span>
                             </li>
                         </ul>
 
@@ -453,7 +459,7 @@
 
     <!-- custom - main-js -->
     <script src="{{ asset('fontend/assets/js/main.js') }}"></script>
-
+    @yield('footer_js')
 </body>
 
 </html>

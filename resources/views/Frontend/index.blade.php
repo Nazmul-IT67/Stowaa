@@ -7,8 +7,8 @@
 
         <!-- product quick view modal - start-->
         @foreach ($products as $product)
-            <div class="modal fade" id="quickview_popup{{ $product->id }}" aria-labelledby="exampleModalToggleLabel2" tabindex="-1"
-                style="display: none;" aria-hidden="true">
+            <div class="modal fade" id="quickview_popup{{ $product->id }}" aria-labelledby="exampleModalToggleLabel2"
+                tabindex="-1" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -21,7 +21,8 @@
                                     <div class="row">
                                         <div class="col col-lg-6">
                                             <div class="product_details_image p-0">
-                                                <img src="{{ asset('Product/Thumbnail/' . $product->created_at->format('Y/m/') . $product->id . '/' . $product->thumbnail) }}" alt="">
+                                                <img src="{{ asset('Product/Thumbnail/' . $product->created_at->format('Y/m/') . $product->id . '/' . $product->thumbnail) }}"
+                                                    alt="">
                                             </div>
                                         </div>
 
@@ -54,9 +55,7 @@
                                                                     <h4 class="input_title">Size *</h4>
                                                                     <select style="display: none;">
                                                                         <option>- Please select Size -</option>
-                                                                        @foreach ($size as $value)
-                                                                            <option value="{{ $value->id }}">{{ $value->size_name }}</option>
-                                                                        @endforeach
+
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -65,9 +64,6 @@
                                                                     <h4 class="input_title">Color *</h4>
                                                                     <select style="display: none;">
                                                                         <option>- Please select Color -</option>
-                                                                        @foreach ($color as $value)
-                                                                            <option value="{{ $value->id }}">{{ $value->color_name }}</option>
-                                                                        @endforeach
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -90,7 +86,7 @@
                                                         </div>
                                                     </form>
                                                     <div class="total_price">
-                                                        Total: $620,99
+                                                        Total: ${{ $product->price }}
                                                     </div>
                                                 </div>
 
@@ -139,57 +135,128 @@
 
         <!-- slider_section - start-->
 
-        <section class="slider_section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9 offset-lg-3">
-                        <div class="main_slider" data-slick='{"arrows": false}'>
-                            <div class="slider_item set-bg-image" data-background="assets/images/slider/slide-2.jpg">
-                                <div class="slider_content">
-                                    <h3 class="small_title" data-animation="fadeInUp2" data-delay=".2s">Clothing</h3>
-                                    <h4 class="big_title" data-animation="fadeInUp2" data-delay=".4s">Smart blood  <span>Pressure monitor</span></h4>
-                                    <p data-animation="fadeInUp2" data-delay=".6s">The best gadgets collection 2021</p>
-                                    <div class="item_price" data-animation="fadeInUp2" data-delay=".6s">
-                                        <del>$430.00</del>
-                                        <span class="sale_price">$350.00</span>
+        <div class="container">
+            <div class="row pt-4">
+                <div class="col-3 mt-5 p-5">
+                    <div class="p-2">
+                        <a href="#"><img src="https://m.media-amazon.com/images/G/01/AdProductsWebsite/images/logos/OG_image_Squid_Ink.png" alt=""></a>
+                    </div>
+                    <div class="p-2">
+                        <a href="#"><img src="https://1000logos.net/wp-content/uploads/2018/10/Alibaba-Logo.jpg" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{ asset('fontend/assets/images/slider/slide-2.jpg') }}" class="d-block w-100"
+                                    alt="...">
+                                <div class="carousel-caption">
+
+                                    <div class="item_price mb-1" data-animation="fadeInUp2" data-delay=".6s">
+                                        <h2 class="fw-bold text-white">Smart blood</h2>
                                     </div>
-                                    <a class="btn btn_primary" href="{{ route('ProductPage') }}" data-animation="fadeInUp2" data-delay=".8s">Start Buying</a>
+                                    <div class="item_price mb-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <h1 class="fw-bold text-white">Pressure monitor</h1>
+                                    </div>
+                                    <div class="item_price mt-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <h6 class="fw-bold">The best gadgets collection 2021</h6>
+                                    </div>
+                                    <div class="item_price mb-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <del class="fw-bold">$430.00</del>
+                                        <span class="sale_price fw-bold">$350.00</span>
+                                    </div>
+                                    <div class="item_price mt-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <a class="btn btn_primary" href="shop_details.html" data-animation="fadeInUp2"
+                                            data-delay=".8s">Start Buying</a>
+                                    </div>
+
                                 </div>
+
                             </div>
-                            <div class="slider_item set-bg-image" data-background="assets/images/slider/slide-3.jpg">
-                                <div class="slider_content">
-                                    <h3 class="small_title" data-animation="fadeInUp2" data-delay=".2s">Clothing</h3>
-                                    <h4 class="big_title" data-animation="fadeInUp2" data-delay=".4s">Smart blood  <span>Pressure monitor</span></h4>
-                                    <p data-animation="fadeInUp2" data-delay=".6s">The best gadgets collection 2021</p>
-                                    <div class="item_price" data-animation="fadeInUp2" data-delay=".6s">
-                                        <del>$430.00</del>
-                                        <span class="sale_price">$350.00</span>
+
+                            <div class="carousel-item">
+                                <img src="{{ asset('fontend/assets/images/slider/slide-1.jpg') }}" class="d-block w-100"
+                                    alt="...">
+                                <div class="carousel-caption">
+
+                                    <div class="item_price mb-1" data-animation="fadeInUp2" data-delay=".6s">
+                                        <h2 class="fw-bold text-white">Smart blood</h2>
                                     </div>
-                                    <a class="btn btn_primary" href="{{ route('ProductPage') }}" data-animation="fadeInUp2" data-delay=".8s">Start Buying</a>
+                                    <div class="item_price mb-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <h1 class="fw-bold text-white">Pressure monitor</h1>
+                                    </div>
+                                    <div class="item_price mt-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <h6 class="fw-bold">The best gadgets collection 2021</h6>
+                                    </div>
+                                    <div class="item_price mb-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <del class="fw-bold">$430.00</del>
+                                        <span class="sale_price fw-bold">$350.00</span>
+                                    </div>
+                                    <div class="item_price mt-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <a class="btn btn_primary" href="shop_details.html" data-animation="fadeInUp2"
+                                            data-delay=".8s">Start Buying</a>
+                                    </div>
+
                                 </div>
+
                             </div>
-                            <div class="slider_item set-bg-image" data-background="assets/images/slider/slide-1.jpg">
-                                <div class="slider_content">
-                                    <h3 class="small_title" data-animation="fadeInUp2" data-delay=".2s">Clothing</h3>
-                                    <h4 class="big_title" data-animation="fadeInUp2" data-delay=".4s">Smart blood  <span>Pressure monitor</span></h4>
-                                    <p data-animation="fadeInUp2" data-delay=".6s">The best gadgets collection 2021</p>
-                                    <div class="item_price" data-animation="fadeInUp2" data-delay=".6s">
-                                        <del>$430.00</del>
-                                        <span class="sale_price">$350.00</span>
+
+                            <div class="carousel-item">
+                                <img src="{{ asset('fontend/assets/images/slider/slide-3.jpg') }}" class="d-block w-100"
+                                    alt="...">
+                                <div class="carousel-caption">
+
+                                    <div class="item_price mb-1" data-animation="fadeInUp2" data-delay=".6s">
+                                        <h2 class="fw-bold text-white">Smart blood</h2>
                                     </div>
-                                    <a class="btn btn_primary" href="{{ route('ProductPage') }}" data-animation="fadeInUp2" data-delay=".8s">Start Buying</a>
+                                    <div class="item_price mb-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <h1 class="fw-bold text-white">Pressure monitor</h1>
+                                    </div>
+                                    <div class="item_price mt-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <h6 class="fw-bold">The best gadgets collection 2021</h6>
+                                    </div>
+                                    <div class="item_price mb-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <del class="fw-bold">$430.00</del>
+                                        <span class="sale_price fw-bold">$350.00</span>
+                                    </div>
+                                    <div class="item_price mt-3" data-animation="fadeInUp2" data-delay=".6s">
+                                        <a class="btn btn_primary" href="shop_details.html" data-animation="fadeInUp2"
+                                            data-delay=".8s">Start Buying</a>
+                                    </div>
+
                                 </div>
+
                             </div>
                         </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
         <!-- slider_section - end
-                ================================================== -->
+                            ================================================== -->
 
         <!-- policy_section - start
-                ================================================== -->
+                            ================================================== -->
         <section class="policy_section">
             <div class="container">
                 <div class="row">
@@ -250,11 +317,11 @@
 
         </section>
         <!-- policy_section - end
-                ================================================== -->
+                            ================================================== -->
 
 
         <!-- products-with-sidebar-section - start
-                ================================================== -->
+                            ================================================== -->
         <section class="products-with-sidebar-section">
             <div class="container">
                 <div class="row">
@@ -266,6 +333,7 @@
                                             class="fal fa-long-arrow-right"></i></a></div>
                             </div>
                             <div class="product-area clearfix">
+
                                 @foreach ($products as $product)
                                     <div class="grid">
                                         <div class="product-pic">
@@ -304,10 +372,10 @@
                                                     </li>
                                                     <li>
                                                         <a class="quickview_btn" data-bs-toggle="modal"
-                                                            href="#quickview_popup{{ $product->id }}" role="button" tabindex="0"><svg
-                                                                width="48px" height="48px" viewBox="0 0 24 24"
-                                                                xmlns="http://www.w3.org/2000/svg" stroke="#2329D6"
-                                                                stroke-width="1" stroke-linecap="square"
+                                                            href="#quickview_popup{{ $product->id }}" role="button"
+                                                            tabindex="0"><svg width="48px" height="48px"
+                                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                                                stroke="#2329D6" stroke-width="1" stroke-linecap="square"
                                                                 stroke-linejoin="miter" fill="none" color="#2329D6">
                                                                 <title>Visible (eye)</title>
                                                                 <path
@@ -321,7 +389,9 @@
                                             </div>
                                         </div>
                                         <div class="details">
-                                            <h4><a href="{{ route('SingleProduct',$product->slug) }}">{{ $product->product_title }}</a></h4>
+                                            <h4><a
+                                                    href="{{ route('SingleProduct', $product->slug) }}">{{ $product->product_title }}</a>
+                                            </h4>
                                             <p><a href="#">Apple MacBook Pro13.3″ Laptop with new Touch bar ID </a>
                                             </p>
                                             <div class="rating">
@@ -342,11 +412,14 @@
                                                 </ins>
                                             </span>
                                             <div class="add-cart-area">
-                                                <a class="btn btn-outline-secondary" style="padding-left: 70px;padding-right: 70px; border-radius:5px; color:black" href="{{ route('SingleCart',$product->slug) }}">Add To Cart</a>
+                                                <a class="btn btn-outline-secondary"
+                                                    style="padding-left: 70px;padding-right: 70px; border-radius:5px; color:black"
+                                                    href="{{ route('SingleCart', $product->slug) }}">Add To Cart</a>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
+
                             </div>
                         </div>
 
@@ -1039,8 +1112,7 @@
                                                 </div>
                                             </div>
                                             <div class="slider_item slick-slide slick-cloned" data-slick-index="11"
-                                                id="" aria-hidden="true" tabindex="-1"
-                                                style="width: 274px;">
+                                                id="" aria-hidden="true" tabindex="-1" style="width: 274px;">
                                                 <div class="small_product_layout">
                                                     <a class="item_image" href="shop_details.html" tabindex="-1">
                                                         <img src="fontend/assets/images/latest_product/latest_product_4.png"
@@ -1068,8 +1140,7 @@
                                                 </div>
                                             </div>
                                             <div class="slider_item slick-slide slick-cloned" data-slick-index="12"
-                                                id="" aria-hidden="true" tabindex="-1"
-                                                style="width: 274px;">
+                                                id="" aria-hidden="true" tabindex="-1" style="width: 274px;">
                                                 <div class="small_product_layout">
                                                     <a class="item_image" href="shop_details.html" tabindex="-1">
                                                         <img src="fontend/assets/images/latest_product/latest_product_1.png"
@@ -1097,8 +1168,7 @@
                                                 </div>
                                             </div>
                                             <div class="slider_item slick-slide slick-cloned" data-slick-index="13"
-                                                id="" aria-hidden="true" tabindex="-1"
-                                                style="width: 274px;">
+                                                id="" aria-hidden="true" tabindex="-1" style="width: 274px;">
                                                 <div class="small_product_layout">
                                                     <a class="item_image" href="shop_details.html" tabindex="-1">
                                                         <img src="fontend/assets/images/latest_product/latest_product_2.png"
@@ -1126,8 +1196,7 @@
                                                 </div>
                                             </div>
                                             <div class="slider_item slick-slide slick-cloned" data-slick-index="14"
-                                                id="" aria-hidden="true" tabindex="-1"
-                                                style="width: 274px;">
+                                                id="" aria-hidden="true" tabindex="-1" style="width: 274px;">
                                                 <div class="small_product_layout">
                                                     <a class="item_image" href="shop_details.html" tabindex="-1">
                                                         <img src="fontend/assets/images/latest_product/latest_product_3.png"
@@ -1155,8 +1224,7 @@
                                                 </div>
                                             </div>
                                             <div class="slider_item slick-slide slick-cloned" data-slick-index="15"
-                                                id="" aria-hidden="true" tabindex="-1"
-                                                style="width: 274px;">
+                                                id="" aria-hidden="true" tabindex="-1" style="width: 274px;">
                                                 <div class="small_product_layout">
                                                     <a class="item_image" href="shop_details.html" tabindex="-1">
                                                         <img src="fontend/assets/images/latest_product/latest_product_4.png"
@@ -1216,11 +1284,11 @@
             </div> <!-- end container  -->
         </section>
         <!-- products-with-sidebar-section - end
-                ================================================== -->
+                            ================================================== -->
 
 
         <!-- promotion_section - start
-                ================================================== -->
+                            ================================================== -->
         <section class="promotion_section">
             <div class="container">
                 <div class="row promotion_banner_wrap">
@@ -1255,10 +1323,10 @@
             </div>
         </section>
         <!-- promotion_section - end
-                ================================================== -->
+                            ================================================== -->
 
         <!-- new_arrivals_section - start
-                ================================================== -->
+                            ================================================== -->
         <section class="new_arrivals_section section_space">
             <div class="container">
                 <div class="sec-title-link">
@@ -1578,10 +1646,10 @@
             </div>
         </section>
         <!-- new_arrivals_section - end
-                ================================================== -->
+                            ================================================== -->
 
         <!-- brand_section - start
-                ================================================== -->
+                            ================================================== -->
         <div class="brand_section pb-0">
             <div class="container">
                 <div class="brand_carousel slick-initialized slick-slider">
@@ -1629,10 +1697,10 @@
             </div>
         </div>
         <!-- brand_section - end
-                ================================================== -->
+                            ================================================== -->
 
         <!-- viewed_products_section - start
-                ================================================== -->
+                            ================================================== -->
         <section class="viewed_products_section section_space">
             <div class="container">
 

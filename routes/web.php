@@ -37,6 +37,7 @@ Route::get('dashboard', [DashboardController::class, 'Dashboard'])->name('Dashbo
 Route::get('/',[FrontendController::class, 'Fontend'])->name('Fontend');
 Route::get('single-product/{slug}',[FrontendController::class, 'SingleProduct'])->name('SingleProduct');
 Route::get('product-page',[FrontendController::class, 'ProductPage'])->name('ProductPage');
+// Route::get('get-attribute/{id}',[FrontendController::class, 'GetAttribute'])->name('GetAttribute');
 
 /*
 |--------------------------------------------------------------------------
