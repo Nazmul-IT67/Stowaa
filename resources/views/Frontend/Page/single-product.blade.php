@@ -53,8 +53,12 @@
                         </div>
 
                         <div class="item_price">
-                            <span>${{ $products->price }}</span>
-                            <del>$720.00</del>
+                            <span>
+                                @foreach ($attributes as $attribute)
+                                    <Span>$</span>{{ $attribute->price }}
+                                @endforeach
+                                <del>$720.00</del>
+                            </span>
                         </div>
                         <hr>
 
@@ -77,10 +81,9 @@
                                             <select style="display: none;">
                                                 <option>- Please select Color -</option>
                                             </select>
-                                        </div>
                                     </div>
-
                                 </div>
+                            </div>
                         </div>
 
                         <div class="quantity_wrap">
@@ -93,7 +96,11 @@
                                     <i class="fal fa-plus"></i>
                                 </button>
                             </div>
-                            <div class="total_price">Total: ${{ $products->price }}</div>
+                            <div class="total_price">
+                                @foreach ($attributes as $attribute)
+                                    <Span>Total: $</span>{{ $attribute->price }}
+                                @endforeach
+                            </div>
                         </div>
 
                         <ul class="default_btns_group ul_li">
@@ -134,10 +141,7 @@
 
                     <div class="tab-pane fade" id="additional_information_tab" role="tabpanel">
                         <p>
-                            Return into stiff sections the bedding was hardly able to cover it and seemed ready to slide off
-                            any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about
-                            helplessly as he looked what's happened to me he thought It wasn't a dream. His room, a proper
-                            human room although a little too small
+                           {{$products->summery}}
                         </p>
 
                         <div class="additional_info_list">
@@ -186,7 +190,7 @@
                             <h4 class="reviews_tab_title">2 reviews for this product</h4>
                             <div class="customer_review_item clearfix">
                                 <div class="customer_image">
-                                    <img src="assets/images/team/team_1.jpg" alt="image_not_found">
+                                    <img src="{{ asset('fontend/assets/images/team/team_1.jpg') }}" alt="image_not_found">
                                 </div>
                                 <div class="customer_content">
                                     <div class="customer_info">
@@ -206,7 +210,7 @@
 
                             <div class="customer_review_item clearfix">
                                 <div class="customer_image">
-                                    <img src="assets/images/team/team_2.jpg" alt="image_not_found">
+                                    <img src="{{ asset('fontend/assets/images/team/team_2.jpg') }}" alt="image_not_found">
                                 </div>
                                 <div class="customer_content">
                                     <div class="customer_info">
@@ -257,70 +261,6 @@
     </section>
     <!-- product_details - end -->
 
-    {{-- <section class="product_details section_space pb-0">
-        <div class="container">
-            <div class="row">
-                <div class="col col-lg-6">
-                    <div class="product_details_image">
-                        <div class="details_image_carousel">
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_1.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_2.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_3.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_4.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_1.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_2.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_3.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_4.png') }}" alt="image_not_found">
-                            </div>
-                        </div>
-
-                        <div class="details_image_carousel_nav">
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_1.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_2.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_3.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_4.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_1.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_2.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_3.png') }}" alt="image_not_found">
-                            </div>
-                            <div class="slider_item">
-                                <img src="{{ asset('fontend/assets/images/details/product_details_img_4.png') }}" alt="image_not_found">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
     <!-- related_products_section - start-->
     <section class="related_products_section section_space">
         <div class="container">
@@ -340,7 +280,8 @@
                                     <div class="actions">
                                         <ul>
                                             <li>
-                                                <a href="#"><svg role="img" xmlns="http://www.w3.org/2000/svg"
+                                                <a href="#">
+                                                    <svg role="img" xmlns="http://www.w3.org/2000/svg"
                                                         width="48px" height="48px" viewBox="0 0 24 24"
                                                         stroke="#2329D6" stroke-width="1" stroke-linecap="square"
                                                         stroke-linejoin="miter" fill="none" color="#2329D6">
@@ -351,7 +292,8 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#"><svg role="img" xmlns="http://www.w3.org/2000/svg"
+                                                <a href="#">
+                                                    <svg role="img" xmlns="http://www.w3.org/2000/svg"
                                                         width="48px" height="48px" viewBox="0 0 24 24"
                                                         stroke="#2329D6" stroke-width="1" stroke-linecap="square"
                                                         stroke-linejoin="miter" fill="none" color="#2329D6">
@@ -394,11 +336,10 @@
                                     </div>
                                     <span class="price">
                                         <ins>
-                                            <span class="woocommerce-Price-amount amount">
-                                                <bdi>
-                                                    <span
-                                                        class="woocommerce-Price-currencySymbol">$</span>{{ $products->price }}
-                                                </bdi>
+                                            <span>
+                                                @foreach ($attributes as $attribute)
+                                                    <Span>$</span>{{ $attribute->price }}
+                                                @endforeach
                                             </span>
                                         </ins>
                                     </span>
@@ -452,8 +393,12 @@
                                             <span class="review_value">3 Rating(s)</span>
                                         </div>
                                         <div class="item_price">
-                                            <span>${{ $products->price }}</span>
-                                            <del>$720.00</del>
+                                            <span>
+                                                @foreach ($attributes as $attribute)
+                                                    <Span>$</span>{{ $attribute->price }}
+                                                @endforeach
+                                                <del>$720.00</del>
+                                            </span>
                                         </div>
                                         <hr>
                                         <div class="item_attribute">
@@ -509,13 +454,15 @@
                                                 </div>
                                             </form>
                                             <div class="total_price">
-                                                Total: ${{ $products->price }}
+                                                @foreach ($attributes as $attribute)
+                                                <Span>Total: $</span>{{ $attribute->price }}
+                                                @endforeach
                                             </div>
                                         </div>
 
                                         <ul class="default_btns_group ul_li">
                                             <li><a class="addtocart_btn" href="{{ route('SingleCart', $products->slug) }}">Add To
-                                                    Cart</a></li>
+                                                Cart</a></li>
                                             <li><a href="#!"><i class="far fa-compress-alt"></i></a></li>
                                             <li><a href="#!"><i class="fas fa-heart"></i></a>
                                             </li>

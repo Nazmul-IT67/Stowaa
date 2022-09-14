@@ -19,10 +19,8 @@ return new class extends Migration
             $table->string('slug')->uniqid();
             $table->foreignId('category_id');
             $table->foreignId('subcategory_id');
-            $table->foreignId('brand_id')->nullable();
             $table->string('summery');
             $table->text('description');
-            $table->string('price');
             $table->string('thumbnail')->nullable();
             $table->string('status')->default(1);
             $table->timestamps();

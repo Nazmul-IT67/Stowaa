@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('colors', function (Blueprint $table) {
+        Schema::create('product_attributes', function (Blueprint $table) {
             $table->id();
-            $table->string('color_name');
+            $table->foreignId('product_id');
+            $table->foreignId('color_id');
+            $table->foreignId('size_id');
+            $table->string('quantity');
+            $table->string('price');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colors');
+        Schema::dropIfExists('product_attributes');
     }
 };

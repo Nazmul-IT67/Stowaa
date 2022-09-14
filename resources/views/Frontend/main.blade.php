@@ -61,7 +61,7 @@
                 <div class="sidebar-menu-wrapper">
                     <div class="cart_sidebar">
                         <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
-                        @php
+                        {{-- @php
                             $total=0;
                         @endphp
                         <ul class="cart_items_list ul_li_block mb_30 clearfix">
@@ -80,12 +80,12 @@
                                 <button type="button" class="remove_btn"><i class="fal fa-trash-alt"></i></button>
                             </li>
                             @endforeach
-                        </ul>
+                        </ul> --}}
 
                         <ul class="total_price ul_li_block mb_30 clearfix">
                             <li>
                                 <span>Subtotal:</span>
-                                <span>${{ $total }}</span>
+                                {{-- <span>${{ $total }}</span> --}}
                             </li>
                             <li>
                                 <span>Vat 5%:</span>
@@ -97,7 +97,7 @@
                             </li>
                             <li>
                                 <span>Total:</span>
-                                <span>${{ $total }}</span>
+                                {{-- <span>${{ $total }}</span> --}}
                             </li>
                         </ul>
 
@@ -203,7 +203,7 @@
                                     <li>
                                         <span class="cart_icon">
                                             <i class="icon icon-ShoppingCart"></i>
-                                            <small class="cart_counter">{{ $crt->count() }}</small>
+                                            {{-- <small class="cart_counter">{{ $crt->count() }}</small> --}}
                                         </span>
                                     </li>
                                 </ul>

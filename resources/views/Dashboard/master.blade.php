@@ -27,6 +27,9 @@
     <link href="{{ asset('assets/css/sidebar-menu.css') }}" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="{{ asset('assets/css/app-style.css') }}" rel="stylesheet" />
+    <!-- Add More-->
+    @yield('css')
+
 </head>
 
 <body class="bg-theme bg-theme1">

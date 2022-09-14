@@ -25,7 +25,6 @@
                                                     alt="">
                                             </div>
                                         </div>
-
                                         <div class="col-lg-6">
                                             <div class="product_details_content">
                                                 <h2 class="item_title">{{ $product->product_title }}</h2>
@@ -41,22 +40,27 @@
                                                     <span class="review_value">3 Rating(s)</span>
                                                 </div>
                                                 <div class="item_price">
-                                                    <span>${{ $product->price }}</span>
-                                                    <del>$720.00</del>
+                                                    <div class="total_price">
+                                                        @foreach ($attributes as $attribute)
+                                                        <span>Total: $</span>{{ $attribute->price }}
+                                                        @endforeach
+                                                        <del>$720.00</del>
+                                                    </div>
                                                 </div>
                                                 <hr>
                                                 <div class="item_attribute">
                                                     <h3 class="title_text">Options <span class="underline"></span></h3>
                                                     <form action="#">
                                                         <div class="row">
-
                                                             <div class="col col-md-6">
                                                                 <div class="select_option clearfix">
-                                                                    <h4 class="input_title">Size *</h4>
+                                                                <h4 class="input_title">Size *</h4>
+                                                                @foreach ($attributes as $value)
                                                                     <select style="display: none;">
                                                                         <option>- Please select Size -</option>
-
+                                                                        <option value="">{{ $value->size_name }}</option>
                                                                     </select>
+                                                                @endforeach
                                                                 </div>
                                                             </div>
                                                             <div class="col col-md-6">
@@ -67,7 +71,6 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                         <span class="repuired_text">Repuired Fiields *</span>
                                                     </form>
@@ -87,11 +90,14 @@
                                                     </form>
                                                     <div class="total_price">
                                                         Total: ${{ $product->price }}
+                                                        @foreach ($attributes as $attribute)
+                                                        <span></span>{{ $attribute->price }}
+                                                        @endforeach
                                                     </div>
                                                 </div>
 
                                                 <ul class="default_btns_group ul_li">
-                                                    <li><a class="addtocart_btn" href="#">Add To Cart</a></li>
+                                                    <li><a class="addtocart_btn" href="{{ route('SingleCart', $product->slug) }}">Add To Cart</a></li>
                                                     <li><a href="#!"><i class="far fa-compress-alt"></i></a></li>
                                                     <li><a href="#!"><i class="fas fa-heart"></i></a></li>
                                                 </ul>
@@ -252,11 +258,9 @@
             </div>
         </div>
 
-        <!-- slider_section - end
-                            ================================================== -->
+        <!-- slider_section - end -->
 
-        <!-- policy_section - start
-                            ================================================== -->
+        <!-- policy_section - start= -->
         <section class="policy_section">
             <div class="container">
                 <div class="row">
@@ -316,12 +320,10 @@
             </div>
 
         </section>
-        <!-- policy_section - end
-                            ================================================== -->
+        <!-- policy_section - end-->
 
 
-        <!-- products-with-sidebar-section - start
-                            ================================================== -->
+        <!-- products-with-sidebar-section - start -->
         <section class="products-with-sidebar-section">
             <div class="container">
                 <div class="row">
@@ -342,7 +344,8 @@
                                             <div class="actions">
                                                 <ul>
                                                     <li>
-                                                        <a href="#"><svg role="img"
+                                                        <a href="#">
+                                                            <svg role="img"
                                                                 xmlns="http://www.w3.org/2000/svg" width="48px"
                                                                 height="48px" viewBox="0 0 24 24" stroke="#2329D6"
                                                                 stroke-width="1" stroke-linecap="square"
@@ -351,10 +354,12 @@
                                                                 <path
                                                                     d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z">
                                                                 </path>
-                                                            </svg></a>
+                                                            </svg>
+                                                        </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#"><svg role="img"
+                                                        <a href="#">
+                                                            <svg role="img"
                                                                 xmlns="http://www.w3.org/2000/svg" width="48px"
                                                                 height="48px" viewBox="0 0 24 24" stroke="#2329D6"
                                                                 stroke-width="1" stroke-linecap="square"
@@ -368,12 +373,14 @@
                                                                 </path>
                                                                 <path d="M19 4L22 7L19 10"></path>
                                                                 <path d="M19 13L22 16L19 19"></path>
-                                                            </svg></a>
+                                                            </svg>
+                                                        </a>
                                                     </li>
                                                     <li>
                                                         <a class="quickview_btn" data-bs-toggle="modal"
                                                             href="#quickview_popup{{ $product->id }}" role="button"
-                                                            tabindex="0"><svg width="48px" height="48px"
+                                                            tabindex="0">
+                                                            <svg width="48px" height="48px"
                                                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                                                                 stroke="#2329D6" stroke-width="1" stroke-linecap="square"
                                                                 stroke-linejoin="miter" fill="none" color="#2329D6">
@@ -383,7 +390,8 @@
                                                                 </path>
                                                                 <circle cx="12" cy="12" r="3">
                                                                 </circle>
-                                                            </svg></a>
+                                                            </svg>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -403,17 +411,18 @@
                                             </div>
                                             <span class="price">
                                                 <ins>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi>
-                                                            <span
-                                                                class="woocommerce-Price-currencySymbol">$</span>{{ $product->price }}
-                                                        </bdi>
+                                                    <span>
+                                                        <div>
+                                                            @foreach ($attributes as $key=> $attribute)
+                                                            <span class="woocommerce-Price-currencySymbol">${{ $attribute->price }}</span>
+                                                            @endforeach
+                                                        </div>
                                                     </span>
                                                 </ins>
                                             </span>
                                             <div class="add-cart-area">
                                                 <a class="btn btn-outline-secondary"
-                                                    style="padding-left: 70px;padding-right: 70px; border-radius:5px; color:black"
+                                                    style="padding-left: 70px;padding-right: 60px; border-radius:5px; color:rgb(150, 8, 79)"
                                                     href="{{ route('SingleCart', $product->slug) }}">Add To Cart</a>
                                             </div>
                                         </div>
@@ -1283,12 +1292,10 @@
                 </div>
             </div> <!-- end container  -->
         </section>
-        <!-- products-with-sidebar-section - end
-                            ================================================== -->
+        <!-- products-with-sidebar-section - end -->
 
 
-        <!-- promotion_section - start
-                            ================================================== -->
+        <!-- promotion_section - start -->
         <section class="promotion_section">
             <div class="container">
                 <div class="row promotion_banner_wrap">
@@ -1322,11 +1329,9 @@
                 </div>
             </div>
         </section>
-        <!-- promotion_section - end
-                            ================================================== -->
+        <!-- promotion_section - end -->
 
-        <!-- new_arrivals_section - start
-                            ================================================== -->
+        <!-- new_arrivals_section - start -->
         <section class="new_arrivals_section section_space">
             <div class="container">
                 <div class="sec-title-link">
@@ -1645,11 +1650,9 @@
                 </div>
             </div>
         </section>
-        <!-- new_arrivals_section - end
-                            ================================================== -->
+        <!-- new_arrivals_section - end -->
 
-        <!-- brand_section - start
-                            ================================================== -->
+        <!-- brand_section - start -->
         <div class="brand_section pb-0">
             <div class="container">
                 <div class="brand_carousel slick-initialized slick-slider">
@@ -1696,11 +1699,9 @@
                 </div>
             </div>
         </div>
-        <!-- brand_section - end
-                            ================================================== -->
+        <!-- brand_section - end -->
 
-        <!-- viewed_products_section - start
-                            ================================================== -->
+        <!-- viewed_products_section - start -->
         <section class="viewed_products_section section_space">
             <div class="container">
 

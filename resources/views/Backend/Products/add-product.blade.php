@@ -69,27 +69,60 @@
                         @enderror
                     </div>
 
-                    <div class="form-group">
-                        <label for="price">Product Price</label>
-                        <input type="text" name="price" class="form-control @error('price') is-invalid @enderror" id="price" value="{{ old('price') }}" placeholder="Product Price">
-                        @error('price')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Category Name</label>
+                                <select class="form-control" name="color_id" id="color_id">
+                                    <option value="">-- Select Color --</option>
+                                    @foreach ($colors as $value)
+                                        <option value="{{ $value->id }}">{{ $value->color_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Category Name</label>
+                                <select class="form-control" name="size_id" id="size_id">
+                                    <option value="">-- Select Size --</option>
+                                    @foreach ($sizes as $value)
+                                        <option value="{{ $value->id }}">{{ $value->size_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="price">Product Price</label>
+                                <input type="number" name="price" class="form-control" id="price">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="quantity">Product Quantity</label>
+                                <input type="number" name="quantity" class="form-control" id="quantity">
+                            </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="thumbnail">Product Image</label>
-                        <input type="file" name="thumbnail" class="form-control" id="thumbnail">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="thumbnail">Product Gallery</label>
-                        <input multiple type="file" id="product_image" name="image[]" class="form-control">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="thumbnail">Product Thumbnail</label>
+                                <input type="file" name="thumbnail" class="form-control" id="thumbnail">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="image">Product Images</label>
+                                <input multiple type="file" id="image" name="image[]" class="form-control">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-light">Submit</button>
                     </div>
+
                 </form>
             </div>
         </div>
@@ -101,6 +134,7 @@
             $('#slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g, "-"));
         });
 
+        //----Select Sub Category----//
 
         $('#category_id').change(function() {
             let category_id = $(this).val();

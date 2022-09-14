@@ -14,6 +14,7 @@ class FrontendController extends Controller
     function Fontend(){
         return view('Frontend.index',[
             'products'=>Products::all(),
+            'attributes'=>ProductAttribute::all(),
         ]);
     }
 
@@ -21,6 +22,7 @@ class FrontendController extends Controller
         $products=Products::where('slug', $slug)->first();
         return view('Frontend.Page.single-product',[
             'products'=>$products,
+            'attributes'=>ProductAttribute::all(),
         ]);
     }
 
@@ -28,6 +30,7 @@ class FrontendController extends Controller
         $products= Products::all();
         return view('Frontend.Page.product-page',[
             'products'=>$products,
+            'attributes'=>ProductAttribute::all(),
         ]);
     }
 

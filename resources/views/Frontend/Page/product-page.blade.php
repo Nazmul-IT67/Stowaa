@@ -130,7 +130,8 @@
                                     <li>
                                         <button class="active" data-bs-toggle="tab" data-bs-target="#home" type="button"
                                             role="tab" aria-controls="home" aria-selected="true"><i
-                                                class="fal fa-bars"></i></button>
+                                            class="fal fa-bars"></i>
+                                        </button>
                                     </li>
                                     <li>
                                         <button data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab"
@@ -174,7 +175,8 @@
                                         <div class="actions">
                                             <ul>
                                                 <li>
-                                                    <a href="#"><svg role="img"
+                                                    <a href="#">
+                                                        <svg role="img"
                                                             xmlns="http://www.w3.org/2000/svg" width="48px"
                                                             height="48px" viewBox="0 0 24 24" stroke="#2329D6"
                                                             stroke-width="1" stroke-linecap="square"
@@ -184,10 +186,12 @@
                                                             <path
                                                                 d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z">
                                                             </path>
-                                                        </svg></a>
+                                                        </svg>
+                                                    </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#"><svg role="img"
+                                                    <a href="#">
+                                                        <svg role="img"
                                                             xmlns="http://www.w3.org/2000/svg" width="48px"
                                                             height="48px" viewBox="0 0 24 24" stroke="#2329D6"
                                                             stroke-width="1" stroke-linecap="square"
@@ -202,7 +206,8 @@
                                                             </path>
                                                             <path d="M19 4L22 7L19 10"></path>
                                                             <path d="M19 13L22 16L19 19"></path>
-                                                        </svg></a>
+                                                        </svg>
+                                                    </a>
                                                 </li>
                                                 <li>
                                                     <a class="quickview_btn" data-bs-toggle="modal"
@@ -218,7 +223,8 @@
                                                             </path>
                                                             <circle cx="12" cy="12" r="3">
                                                             </circle>
-                                                        </svg></a>
+                                                        </svg>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -239,16 +245,15 @@
                                         </div>
                                         <span class="price">
                                             <ins>
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi>
-                                                        <span
-                                                            class="woocommerce-Price-currencySymbol">$</span>{{ $product->price }}
-                                                    </bdi>
+                                                <span>
+                                                    @foreach ($attributes as $attribute)
+                                                    $</span>{{ $attribute->price }}
+                                                    @endforeach
                                                 </span>
                                             </ins>
                                         </span>
                                         <div class="add-cart-area">
-                                            <a class="btn btn-outline-secondary" style="padding-left: 70px;padding-right: 70px; border-radius:5px; color:black" href="{{ route('SingleCart', $product->slug) }}">Add To Cart</a>
+                                            <a class="btn btn-outline-secondary" style="padding-left: 70px;padding-right: 60px; border-radius:5px; color:rgb(139, 6, 73)" href="{{ route('SingleCart', $product->slug) }}">Add To Cart</a>
                                         </div>
                                     </div>
                                 </div>
@@ -308,8 +313,12 @@
                                                                 <span class="review_value">3 Rating(s)</span>
                                                             </div>
                                                             <div class="item_price">
-                                                                <span>${{ $product->price }}</span>
-                                                                <del>$720.00</del>
+                                                                <span>
+                                                                    @foreach ($attributes as $attribute)
+                                                                    <Span>$</span>{{ $attribute->price }}
+                                                                    @endforeach
+                                                                    <del>$720.00</del>
+                                                                </span>
                                                             </div>
                                                             <hr>
                                                             <div class="item_attribute">
@@ -324,7 +333,7 @@
                                                                                 <select style="display: none;">
                                                                                     <option>- Please select Size -
                                                                                     </option>
-                                                                                    {{-- @foreach ($size as $value)
+                                                                                    {{-- @foreach ($sizes as $value)
                                                                                         <option
                                                                                             value="{{ $value->id }}">
                                                                                             {{ $value->size_name }}
@@ -339,7 +348,7 @@
                                                                                 <select style="display: none;">
                                                                                     <option>- Please select Color -
                                                                                     </option>
-                                                                                    {{-- @foreach ($color as $value)
+                                                                                    {{-- @foreach ($colors as $value)
                                                                                         <option
                                                                                             value="{{ $value->id }}">
                                                                                             {{ $value->color_name }}
@@ -371,7 +380,9 @@
                                                                     </div>
                                                                 </form>
                                                                 <div class="total_price">
-                                                                    Total:${{ $product->price}}
+                                                                    @foreach ($attributes as $attribute)
+                                                                    <Span>Total: $</span>{{ $attribute->price }}
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
 

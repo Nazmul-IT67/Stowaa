@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Color;
+use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\SubCategory;
@@ -11,6 +13,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Constraint\Count;
 use App\Models\ProductGallery;
+use App\Models\Size;
 
 class ProductsController extends Controller
 {
@@ -20,6 +23,8 @@ class ProductsController extends Controller
         return view('Backend.Products.add-product',[
             'last'=>$last,
             'categories'=>Category::orderBy('category_name', 'asc')->get(),
+            'colors'=>Color::all(),
+            'sizes'=>Size::all(),
         ]);
     }
 
@@ -42,12 +47,11 @@ class ProductsController extends Controller
         $product->slug=$request->slug;
         $product->category_id=$request->category_id;
         $product->subcategory_id=$request->subcategory_id;
-        $product->brand_id=$request->brand_id;
         $product->summery=$request->summery;
         $product->description=$request->description;
-        $product->price=$request->price;
         $product->save();
 
+        //Thunbnail//
         if($request->hasFile('thumbnail')){
             $image=$request->file('thumbnail');
             $ext=$request->product_title.'.'.$image->getClientOriginalExtension();
@@ -58,6 +62,7 @@ class ProductsController extends Controller
             $new->thumbnail=$ext;
             $new->save();
         };
+
         // Miltiple Images
         if($request->hasFile('image')){
             $images=$request->file('image');
@@ -72,7 +77,18 @@ class ProductsController extends Controller
                 $img->save();
             }
         }
-        return redirect('product-list')->with('message', 'Product Add Successfull!');
+
+        //Product Attribute//
+        $attributes=new ProductAttribute();
+        $attributes->product_id=$product->id;
+        $attributes->color_id=$request->color_id;
+        $attributes->size_id=$request->size_id;
+        $attributes->price=$request->price;
+        $attributes->quantity=$request->quantity;
+        $attributes->save();
+
+        // return redirect('product-list')->with('message', 'Product Add Successfull!');
+
     }
 
     function ProductList(){
