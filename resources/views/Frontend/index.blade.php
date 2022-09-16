@@ -4,7 +4,6 @@
 @endsection
 @section('index')
     <main>
-
         <!-- product quick view modal - start-->
         @foreach ($products as $product)
             <div class="modal fade" id="quickview_popup{{ $product->id }}" aria-labelledby="exampleModalToggleLabel2"
@@ -41,9 +40,9 @@
                                                 </div>
                                                 <div class="item_price">
                                                     <div class="total_price">
-                                                        @foreach ($attributes as $attribute)
-                                                        <span>Total: $</span>{{ $attribute->price }}
-                                                        @endforeach
+
+                                                        <span>Total: $</span>{{ $product->price }}
+
                                                         <del>$720.00</del>
                                                     </div>
                                                 </div>
@@ -90,9 +89,6 @@
                                                     </form>
                                                     <div class="total_price">
                                                         Total: ${{ $product->price }}
-                                                        @foreach ($attributes as $attribute)
-                                                        <span></span>{{ $attribute->price }}
-                                                        @endforeach
                                                     </div>
                                                 </div>
 
@@ -413,9 +409,7 @@
                                                 <ins>
                                                     <span>
                                                         <div>
-                                                            @foreach ($attributes as $key=> $attribute)
-                                                            <span class="woocommerce-Price-currencySymbol">${{ $attribute->price }}</span>
-                                                            @endforeach
+                                                            <span>${{ $product->price }}</span>
                                                         </div>
                                                     </span>
                                                 </ins>

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Constraint\Count;
 use App\Models\ProductGallery;
 use App\Models\Size;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -49,6 +50,7 @@ class ProductsController extends Controller
         $product->subcategory_id=$request->subcategory_id;
         $product->summery=$request->summery;
         $product->description=$request->description;
+        $product->price=$request->price;
         $product->save();
 
         //Thunbnail//
@@ -78,16 +80,23 @@ class ProductsController extends Controller
             }
         }
 
-        //Product Attribute//
-        $attributes=new ProductAttribute();
-        $attributes->product_id=$product->id;
-        $attributes->color_id=$request->color_id;
-        $attributes->size_id=$request->size_id;
-        $attributes->price=$request->price;
-        $attributes->quantity=$request->quantity;
-        $attributes->save();
+        $color=$request->color;
+        $size=$request->size;
+        $quantity=$request->quantity;
+        $product_price=$request->product_price;
 
-        // return redirect('product-list')->with('message', 'Product Add Successfull!');
+        for($i=0; $i<count($color); $i++){
+            $data=[
+                'product_id'=>$product->id,
+                'color'=>$color[$i],
+                'size'=>$size[$i],
+                'quantity'=>$quantity[$i],
+                'product_price'=>$product_price[$i],
+            ];
+            DB::table('product_attributes')->insert($data);
+        }
+
+        return redirect('product-list')->with('message', 'Product Add Successfull!');
 
     }
 

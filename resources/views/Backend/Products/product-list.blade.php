@@ -45,7 +45,7 @@
                                 <td>{{ $items->product_title }}</td>
                                 <td>{{ $items->category->category_name }}</td>
                                 <td>{{ $items->subcategory->subcategory_name }}</td>
-                                <td> <img src="{{ asset('Product/Thumbnail/'.$items->created_at->format('Y/m/').$items->id.'/'.$items->thumbnail) }}" alt="" class="img-fluid"></td>
+                                <td> <img src="{{ asset('Product/Thumbnail/'.$items->created_at->format('Y/m/').$items->id.'/'.$items->thumbnail) }}" class="img-fluid w-50"></td>
                                 <td>{{ $items->created_at != null ? $items->created_at->diffForHumans() : 'N/A' }}</td>
                                 <td>
                                     @if ($items->status == 1)

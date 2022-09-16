@@ -13,9 +13,7 @@
     </div>
     <!-- breadcrumb_section - end-->
 
-
     <!-- cart_section - start-->
-
     <section class="cart_section section_space">
         <div class="container">
 
@@ -31,15 +29,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php
+                        {{-- @php
                             $total=0;
                         @endphp
                         @foreach ($carts as $cart)
                             <tr>
                                 <td>
                                     <div class="cart_product">
-                                        <img src="{{ asset('Product/Thumbnail/' . $cart->product->created_at->format('Y/m/') . $cart->product->id . '/' . $cart->product->thumbnail) }}" alt="image_not_found">
-                                        <h3><a href="shop_details.html">{{ $cart->product->product_title }}</a></h3>
+                                        <img src="{{ asset('Product/Thumbnail/' . $cart->$product->created_at->format('Y/m/') . $cart->$product->id . '/' . $cart->$product->thumbnail) }}">
+
+                                        <img src="{{ asset('Images/' . $cart->product->created_at->format('Y/m/') . $cart->product->id . '/' . $cart->product->thumbnail) }}"
+                                            alt="">
+                                        <h3><a href="#">{{ $cart->product->product_title }}</a></h3>
                                     </div>
                                 </td>
                                 <td class="text-center"><span class="price_text">${{ $cart->product->price }}</span></td>
@@ -59,7 +60,9 @@
                                 @php
                                     $total +=($cart->product->price*$cart->quantity);
                                 @endphp
-                                <td class="text-center"><span class="price_text">${{ $cart->product->price*$cart->quantity  }}</span></td>
+                                <td class="text-center">
+                                    <span class="price_text">${{ $cart->product->price*$cart->quantity  }}</span>
+                                </td>
                                 <td class="text-center">
                                     <button type="button" class="remove_btn">
                                         <i class="fal fa-trash-alt">
@@ -67,7 +70,7 @@
                                     </button>
                                 </td>
                             </tr>
-                        @endforeach
+                        @endforeach --}}
                     </tbody>
                 </table>
             </div>
@@ -119,7 +122,7 @@
                     <div class="cart_total_table">
                         <h3 class="wrap_title">Cart Totals</h3>
                         <ul class="ul_li_block">
-                            <li>
+                            {{-- <li>
                                 <span>Cart Subtotal</span>
                                 <span>${{ $total }}</span>
                             </li>
@@ -127,7 +130,7 @@
                             <li>
                                 <span>Order Total</span>
                                 <span class="total_price">${{ $total }}</span>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

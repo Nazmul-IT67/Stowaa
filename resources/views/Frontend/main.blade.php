@@ -109,11 +109,9 @@
 
                     <div class="cart_overlay"></div>
                 </div>
-                <!-- sidebar cart - end
-                        ================================================== -->
+                <!-- sidebar cart - end-->
 
-        <!-- header_section - start
-        ================================================== -->
+        <!-- header_section - start-->
         <header class="header_section header-style-no-collapse">
             <div class="header_top">
                 <div class="container">
@@ -296,17 +294,14 @@
                 </div>
             </div>
         </header>
-        <!-- header_section - end
-        ================================================== -->
+        <!-- header_section - end-->
 
-        <!-- main body - start
-        ================================================== -->
+        <!-- main body - start-->
         <main>
 
             @yield('index')
 
-            <!-- newsletter_section - start
-            ================================================== -->
+            <!-- newsletter_section - start-->
             <section class="newsletter_section">
                 <div class="container">
                     <div class="row align-items-center">
@@ -325,15 +320,12 @@
                     </div>
                 </div>
             </section>
-            <!-- newsletter_section - end
-            ================================================== -->
+            <!-- newsletter_section - end-->
 
         </main>
-        <!-- main body - end
-        ================================================== -->
+        <!-- main body - end-->
 
-        <!-- footer_section - start
-        ================================================== -->
+        <!-- footer_section - start-->
         <footer class="footer_section">
             <div class="footer_widget_area">
                 <div class="container">
@@ -439,8 +431,7 @@
                 </div>
             </div>
         </footer>
-        <!-- footer_section - end
-        ================================================== -->
+        <!-- footer_section - end-->
 
     </div>
     <!-- body_wrap - end -->

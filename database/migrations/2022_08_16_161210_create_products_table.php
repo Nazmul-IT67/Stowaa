@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('subcategory_id');
             $table->string('summery');
             $table->text('description');
+            $table->text('price');
             $table->string('thumbnail')->nullable();
             $table->string('status')->default(1);
             $table->timestamps();

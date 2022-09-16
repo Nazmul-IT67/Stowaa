@@ -54,9 +54,8 @@
 
                         <div class="item_price">
                             <span>
-                                @foreach ($attributes as $attribute)
-                                    <Span>$</span>{{ $attribute->price }}
-                                @endforeach
+                                <Span>$</span>{{ $products->price }}
+
                                 <del>$720.00</del>
                             </span>
                         </div>
@@ -97,14 +96,12 @@
                                 </button>
                             </div>
                             <div class="total_price">
-                                @foreach ($attributes as $attribute)
-                                    <Span>Total: $</span>{{ $attribute->price }}
-                                @endforeach
+                                <Span>Total: $</span>{{ $products->price }}
                             </div>
                         </div>
 
                         <ul class="default_btns_group ul_li">
-                            <li><a class="btn btn_primary addtocart_btn" href="#!">Add To Cart</a></li>
+                            <li><a class="btn btn_primary addtocart_btn" href="{{ route('SingleCart', $products->slug) }}">Add To Cart</a></li>
                         </ul>
                     </div>
                     </form>
@@ -337,9 +334,7 @@
                                     <span class="price">
                                         <ins>
                                             <span>
-                                                @foreach ($attributes as $attribute)
-                                                    <Span>$</span>{{ $attribute->price }}
-                                                @endforeach
+                                                <Span>$</span>{{ $products->price }}
                                             </span>
                                         </ins>
                                     </span>
@@ -394,9 +389,7 @@
                                         </div>
                                         <div class="item_price">
                                             <span>
-                                                @foreach ($attributes as $attribute)
-                                                    <Span>$</span>{{ $attribute->price }}
-                                                @endforeach
+                                                <Span>$</span>{{ $products->price }}
                                                 <del>$720.00</del>
                                             </span>
                                         </div>
@@ -454,9 +447,7 @@
                                                 </div>
                                             </form>
                                             <div class="total_price">
-                                                @foreach ($attributes as $attribute)
-                                                <Span>Total: $</span>{{ $attribute->price }}
-                                                @endforeach
+                                                <Span>Total: $</span>{{ $products->price }}
                                             </div>
                                         </div>
 

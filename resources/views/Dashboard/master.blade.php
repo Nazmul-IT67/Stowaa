@@ -28,7 +28,6 @@
     <!-- Custom Style-->
     <link href="{{ asset('assets/css/app-style.css') }}" rel="stylesheet" />
     <!-- Add More-->
-    @yield('css')
 
 </head>
 

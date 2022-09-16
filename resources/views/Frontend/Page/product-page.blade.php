@@ -246,9 +246,7 @@
                                         <span class="price">
                                             <ins>
                                                 <span>
-                                                    @foreach ($attributes as $attribute)
-                                                    $</span>{{ $attribute->price }}
-                                                    @endforeach
+                                                    $</span>{{ $product->price }}
                                                 </span>
                                             </ins>
                                         </span>
@@ -314,9 +312,7 @@
                                                             </div>
                                                             <div class="item_price">
                                                                 <span>
-                                                                    @foreach ($attributes as $attribute)
-                                                                    <Span>$</span>{{ $attribute->price }}
-                                                                    @endforeach
+                                                                    <Span>$</span>{{ $product->price }}
                                                                     <del>$720.00</del>
                                                                 </span>
                                                             </div>
@@ -380,9 +376,7 @@
                                                                     </div>
                                                                 </form>
                                                                 <div class="total_price">
-                                                                    @foreach ($attributes as $attribute)
-                                                                    <Span>Total: $</span>{{ $attribute->price }}
-                                                                    @endforeach
+                                                                    <Span>Total: $</span>{{ $product->price }}
                                                                 </div>
                                                             </div>
 
