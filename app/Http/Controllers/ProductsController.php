@@ -79,17 +79,17 @@ class ProductsController extends Controller
                 $img->save();
             }
         }
-
-        $color=$request->color;
-        $size=$request->size;
+        // Product Attribute
+        $color_id=$request->color_id;
+        $size_id=$request->size_id;
         $quantity=$request->quantity;
         $product_price=$request->product_price;
 
-        for($i=0; $i<count($color); $i++){
+        for($i=0; $i<count($color_id); $i++){
             $data=[
                 'product_id'=>$product->id,
-                'color'=>$color[$i],
-                'size'=>$size[$i],
+                'color_id'=>$color_id[$i],
+                'size_id'=>$size_id[$i],
                 'quantity'=>$quantity[$i],
                 'product_price'=>$product_price[$i],
             ];

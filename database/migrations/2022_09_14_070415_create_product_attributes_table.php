@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('product_attributes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->string('color');
-            $table->string('size');
+            $table->foreignId('color_id');
+            $table->foreignId('size_id');
             $table->string('quantity');
             $table->string('product_price');
             $table->timestamps();

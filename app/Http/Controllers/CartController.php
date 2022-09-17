@@ -10,6 +10,16 @@ use App\Models\Products;
 
 class CartController extends Controller
 {
+
+    function CartPage(Request $request){
+        // $old_cookie=$request->cookie('cookie_id');
+        // $carts=Cart::where('cookie_id',$old_cookie)->get();
+        return view('Frontend.Page.cart-page',[
+            // 'carts'=>$carts,
+        ]);
+    }
+
+
     function SingleCart($slug, Request $request){
         $old_cookie=$request->cookie('cookie_id');
         if($old_cookie){
@@ -33,11 +43,4 @@ class CartController extends Controller
         return back();
     }
 
-    function CartPage(Request $request){
-        $old_cookie=$request->cookie('cookie_id');
-        $carts=Cart::where('cookie_id',$old_cookie)->get();
-        return view('Frontend.Page.cart-page',[
-            'carts'=>$carts,
-        ]);
-    }
 }

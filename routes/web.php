@@ -17,7 +17,6 @@ use App\Http\Controllers\FrontendController;
 | Web Routes
 |--------------------------------------------------------------------------
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,7 +27,6 @@ require __DIR__.'/auth.php';
 |--------------------------------------------------------------------------
 */
 Route::get('dashboard', [DashboardController::class, 'Dashboard'])->name('Dashboard');
-
 /*
 |--------------------------------------------------------------------------
 |                Fontend Routes
@@ -38,7 +36,6 @@ Route::get('/',[FrontendController::class, 'Fontend'])->name('Fontend');
 Route::get('single-product/{slug}',[FrontendController::class, 'SingleProduct'])->name('SingleProduct');
 Route::get('product-page',[FrontendController::class, 'ProductPage'])->name('ProductPage');
 // Route::get('get-attribute/{id}',[FrontendController::class, 'GetAttribute'])->name('GetAttribute');
-
 /*
 |--------------------------------------------------------------------------
 |                    Category Routes
@@ -97,6 +94,6 @@ Route::get('ststus/{id}', [ProductsController::class, 'ChangeStatus'])->name('Ch
 |                Product Cart Routes
 |--------------------------------------------------------------------------
 */
-Route::get('single/cart/{slug}',[CartController::class,'SingleCart'])->name('SingleCart');
 Route::get('cart-page',[CartController::class, 'CartPage'])->name('CartPage');
+Route::get('single/cart/{slug}',[CartController::class,'SingleCart'])->name('SingleCart');
 // Route::get('cart-product',[CartController::class, 'CartProduct'])->name('CartProduct');

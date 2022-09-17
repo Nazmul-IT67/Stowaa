@@ -8,7 +8,7 @@
         <div class="container">
             <div class="overlay toggle-menu"></div>
             <!--end overlay-->
-            <div class="card-body col-7 m-auto" style="border:1px solid #9DBEF2">
+            <div class="card-body col-8 m-auto rounded" style="border:1px solid #505255">
                 <div class="card-title text-center">Product From</div>
                 <hr>
                 <form action="{{ route('ProductPost') }}" method="POST" enctype="multipart/form-data">
@@ -72,55 +72,73 @@
                         @enderror
                     </div>
 
-                    <div class="form-group">
-                        <label for="price">Product Price</label>
-                        <input class="form-control @error('price') is-invalid @enderror" name="price" id="price"
-                            placeholder="Product Price" value="{{ old('price') }}">
-                        @error('price')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="row" id="dynamic_field">
-                        <div class="col-6 p-2">
-                            <label for="color">Product Color</label>
-                            <input type="text" id="color" name="color[]" placeholder="Product Color" class="form-control name_list" />
-                        </div>
-                        <div class="col-6 p-2">
-                            <label for="size">Product Size</label>
-                            <input type="text" id="size" name="size[]" placeholder="Product Size" class="form-control name_list" />
-                        </div>
-                        <div class="col-6 p-2">
-                            <label for="quantity">Product Quantity</label>
-                            <input type="text" id="quantity" name="quantity[]" placeholder="Product Quantity" class="form-control name_list" />
-                        </div>
-                        <div class="col-6 p-2">
-                            <label for="product_price">Product price</label>
-                            <input type="text" id="product_price" name="product_price[]" placeholder="Product price" class="form-control name_list" />
-                        </div>
-                        <div class="col-6 p-2">
-                            <button type="button" name="add" id="add" class="btn btn-success">Add More</button>
-                        </div>
-                    </div>
-
                     <div class="row mt-2">
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="form-group">
                                 <label for="thumbnail">Product Thumbnail</label>
                                 <input type="file" name="thumbnail" class="form-control" id="thumbnail">
                             </div>
+                            <div class="col-md-12 mb-2">
+                                <img id="preview-image-before-upload" style="max-height: 250px;">
+                            </div>
                         </div>
-                        <div class="col-6">
+
+                        <div class="col-4">
                             <div class="form-group">
                                 <label for="image">Product Images</label>
                                 <input multiple type="file" id="image" name="image[]" class="form-control">
                             </div>
                         </div>
-                    </div>
-                    <hr>
 
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="price">Product Price</label>
+                                <input class="form-control @error('price') is-invalid @enderror" name="price" id="price"
+                                    placeholder="Product Price" value="{{ old('price') }}">
+                                @error('price')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.8/css/bootstrap.min.css">
+                    <table class="table table-hover table-bordered" id="tb">
+                        <tr class="tr-header text-center">
+                            <th class="m-3">Product Color</th>
+                            <th class="m-3">Product Size</th>
+                            <th class="m-3">Quantity</th>
+                            <th class="m-3">Product Price</th>
+                            <th class="m-3"><button type="button" id="addMore" class="btn btn-info">Add More</button>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="form-control" name="color_id[]" id="color_id">
+                                    <option value="">-- Color --</option>
+                                    @foreach ($colors as $value)
+                                        <option value="{{ $value->id }}">{{ $value->color_name }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="size_id[]" id="size_id">
+                                    <option value="">-- Size --</option>
+                                    @foreach ($sizes as $value)
+                                        <option value="{{ $value->id }}">{{ $value->size_name }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td><input type="text" name="quantity[]" class="form-control"></td>
+                            <td><input type="text" name="product_price[]" class="form-control"></td>
+                            <td>
+                                <button type="button" class="remove btn btn-danger">Remove</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-light">Submit</button>
+                        <button type="submit" class="btn btn-success btn-lg">Submit</button>
                     </div>
                 </form>
             </div>
@@ -161,31 +179,34 @@
     </script>
 
     {{-- //Add More Input// --}}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function(){
-            var i=1;
-            $('#add').click(function(){
-                i++;
-                $('#dynamic_field').append('<tr id="row'+i+'"><td class="col-3 pb-1"><label for="color">product Color</label><input type="text" name="color[]" placeholder="Product Color" class="form-control name_list" /></td><td class="col-3 pb-1"><label for="size">Product Size</label><input type="text" name="size[]" placeholder="Product Size" class="form-control name_list" /></td><td class="col-2 pb-1"><label for="quantity">Quantity</label><input type="text" name="quantity[]" placeholder="Product Quantity" class="form-control name_list" /></td><td class="col-2 pb-1"><label for="product_price">Price</label><input type="text" name="product_price[]" placeholder="Product Price" class="form-control name_list" /></td><td class="col-2 pb-1"><label for="remove">Action</label><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+        $(function() {
+            $('#addMore').on('click', function() {
+                var data = $("#tb tr:eq(1)").clone(true).appendTo("#tb");
+                data.find("input").val('');
             });
-
-            $(document).on('click', '.btn_remove', function(){
-                var button_id = $(this).attr("id");
-                $('#row'+button_id+'').remove();
+            $(document).on('click', '.remove', function() {
+                var trIndex = $(this).closest("tr").index();
+                if (trIndex > 1) {
+                    $(this).closest("tr").remove();
+                } else {
+                    alert("Sorry!! Can't remove first row!");
+                }
             });
+        });
+    </script>
 
-            $('#submit').click(function(){
-                $.ajax({
-                    url:"name.php",
-                    method:"POST",
-                    data:$('#add_name').serialize(),
-                    success:function(data)
-                    {
-                        alert(data);
-                        $('#add_name')[0].reset();
-                    }
-                });
+    {{-- Image Preview --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $('#thumbnail').change(function(){
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                $('#preview-image-before-upload').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
             });
         });
     </script>
