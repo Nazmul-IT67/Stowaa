@@ -96,4 +96,5 @@ Route::get('ststus/{id}', [ProductsController::class, 'ChangeStatus'])->name('Ch
 */
 Route::get('cart-page',[CartController::class, 'CartPage'])->name('CartPage');
 Route::get('single/cart/{slug}',[CartController::class,'SingleCart'])->name('SingleCart');
-// Route::get('cart-product',[CartController::class, 'CartProduct'])->name('CartProduct');
+Route::get('cart-product',[CartController::class, 'CartProduct'])->name('CartProduct');
+Route::get('cart-update',[CartController::class, 'CartUpdate'])->name('CartUpdate');

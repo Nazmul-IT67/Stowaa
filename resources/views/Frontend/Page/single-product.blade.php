@@ -22,7 +22,8 @@
                         <div class="details_image_carousel">
                             @foreach ($products->ProductGallery as $gallery)
                                 <div class="slider_item">
-                                    <img src="{{ asset('Product/Gallerys/' . $gallery->created_at->format('Y/m/') . $gallery->product_id . '/' . $gallery->product_gallery) }}" alt="">
+                                    <img src="{{ asset('Product/Gallerys/' . $gallery->created_at->format('Y/m/') . $gallery->product_id . '/' . $gallery->product_gallery) }}"
+                                        alt="">
                                 </div>
                             @endforeach
                         </div>
@@ -30,7 +31,8 @@
                         <div class="details_image_carousel_nav">
                             @foreach ($products->ProductGallery as $gallery)
                                 <div class="slider_item">
-                                    <img src="{{ asset('Product/Gallerys/' . $gallery->created_at->format('Y/m/') . $gallery->product_id . '/' . $gallery->product_gallery) }}" alt="">
+                                    <img src="{{ asset('Product/Gallerys/' . $gallery->created_at->format('Y/m/') . $gallery->product_id . '/' . $gallery->product_gallery) }}"
+                                        alt="">
                                 </div>
                             @endforeach
                         </div>
@@ -52,34 +54,42 @@
                             <span class="review_value">3 Rating(s)</span>
                         </div>
 
-                        <div class="item_price">
-                            <span>
-                                <Span>$</span>{{ $products->price }}
-
-                                <del>$720.00</del>
-                            </span>
+                        <div class="item_price row">
+                            <div class="col-6">
+                                <h4 class="price">$ {{ $products->price }}</h4>
+                            </div>
+                            <div class="col-6">
+                                <h6>Avelable product:
+                                    @foreach ($products->ProductAttribute as $item)
+                                        {{ $item->quantity }}
+                                    @endforeach
+                                </h6>
+                            </div>
                         </div>
                         <hr>
 
                         <div class="item_attribute">
-                            <form action="#">
-                                <div class="row">
-
-                                    <div class="col col-md-6">
-                                        <div class="select_option clearfix">
-                                            <h4 class="input_title">Size *</h4>
-                                            <select style="display: none;">
-                                                <option>- Please select Size -</option>
-
-                                            </select>
-                                        </div>
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <div class="select_option clearfix">
+                                        <h4 class="input_title">Color *</h4>
+                                        <select name="color_id" class="color_id">
+                                            <option>- Please select Color -</option>
+                                            @foreach ($groupby as $color)
+                                                <option>{{ $color[0]->color->color_name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <div class="col col-md-6">
-                                        <div class="select_option clearfix">
-                                            <h4 class="input_title">Color *</h4>
-                                            <select style="display: none;">
-                                                <option>- Please select Color -</option>
-                                            </select>
+                                </div>
+                                <div class="col col-md-6">
+                                    <div class="select_option clearfix">
+                                        <h4 class="input_title">Size *</h4>
+                                        <select class="sizecheck" style="display: none;">
+                                            <option>- Please select Size -</option>
+                                            @foreach ($groupby as $size)
+                                                <option>{{ $size[0]->size->size_name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -101,10 +111,12 @@
                         </div>
 
                         <ul class="default_btns_group ul_li">
-                            <li><a class="btn btn_primary addtocart_btn" href="{{ route('SingleCart', $products->slug) }}">Add To Cart</a></li>
+                            <li>
+                                <a class="btn btn_primary addtocart_btn"
+                                    href="{{ route('SingleCart', $products->slug) }}">Add To Cart</a>
+                            </li>
                         </ul>
                     </div>
-                    </form>
                 </div>
             </div>
 
@@ -138,7 +150,7 @@
 
                     <div class="tab-pane fade" id="additional_information_tab" role="tabpanel">
                         <p>
-                           {{$products->summery}}
+                            {{ $products->summery }}
                         </p>
 
                         <div class="additional_info_list">
@@ -187,7 +199,8 @@
                             <h4 class="reviews_tab_title">2 reviews for this product</h4>
                             <div class="customer_review_item clearfix">
                                 <div class="customer_image">
-                                    <img src="{{ asset('fontend/assets/images/team/team_1.jpg') }}" alt="image_not_found">
+                                    <img src="{{ asset('fontend/assets/images/team/team_1.jpg') }}"
+                                        alt="image_not_found">
                                 </div>
                                 <div class="customer_content">
                                     <div class="customer_info">
@@ -207,7 +220,8 @@
 
                             <div class="customer_review_item clearfix">
                                 <div class="customer_image">
-                                    <img src="{{ asset('fontend/assets/images/team/team_2.jpg') }}" alt="image_not_found">
+                                    <img src="{{ asset('fontend/assets/images/team/team_2.jpg') }}"
+                                        alt="image_not_found">
                                 </div>
                                 <div class="customer_content">
                                     <div class="customer_info">
@@ -278,10 +292,10 @@
                                         <ul>
                                             <li>
                                                 <a href="#">
-                                                    <svg role="img" xmlns="http://www.w3.org/2000/svg"
-                                                        width="48px" height="48px" viewBox="0 0 24 24"
-                                                        stroke="#2329D6" stroke-width="1" stroke-linecap="square"
-                                                        stroke-linejoin="miter" fill="none" color="#2329D6">
+                                                    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="48px"
+                                                        height="48px" viewBox="0 0 24 24" stroke="#2329D6"
+                                                        stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"
+                                                        fill="none" color="#2329D6">
                                                         <title>Favourite</title>
                                                         <path
                                                             d="M12,21 L10.55,19.7051771 C5.4,15.1242507 2,12.1029973 2,8.39509537 C2,5.37384196 4.42,3 7.5,3 C9.24,3 10.91,3.79455041 12,5.05013624 C13.09,3.79455041 14.76,3 16.5,3 C19.58,3 22,5.37384196 22,8.39509537 C22,12.1029973 18.6,15.1242507 13.45,19.7149864 L12,21 Z" />
@@ -290,10 +304,10 @@
                                             </li>
                                             <li>
                                                 <a href="#">
-                                                    <svg role="img" xmlns="http://www.w3.org/2000/svg"
-                                                        width="48px" height="48px" viewBox="0 0 24 24"
-                                                        stroke="#2329D6" stroke-width="1" stroke-linecap="square"
-                                                        stroke-linejoin="miter" fill="none" color="#2329D6">
+                                                    <svg role="img" xmlns="http://www.w3.org/2000/svg" width="48px"
+                                                        height="48px" viewBox="0 0 24 24" stroke="#2329D6"
+                                                        stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"
+                                                        fill="none" color="#2329D6">
                                                         <title>Shuffle</title>
                                                         <path
                                                             d="M21 16.0399H17.7707C15.8164 16.0399 13.9845 14.9697 12.8611 13.1716L10.7973 9.86831C9.67384 8.07022 7.84196 7 5.88762 7L3 7" />
@@ -306,11 +320,11 @@
                                             </li>
                                             <li>
                                                 <a class="#quickview_popup" data-bs-toggle="modal"
-                                                    href="#quickview_popup{{ $products->id }}" role="button" tabindex="0"><svg
-                                                        width="48px" height="48px" viewBox="0 0 24 24"
-                                                        xmlns="http://www.w3.org/2000/svg" stroke="#2329D6"
-                                                        stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"
-                                                        fill="none" color="#2329D6">
+                                                    href="#quickview_popup{{ $products->id }}" role="button"
+                                                    tabindex="0"><svg width="48px" height="48px"
+                                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                                        stroke="#2329D6" stroke-width="1" stroke-linecap="square"
+                                                        stroke-linejoin="miter" fill="none" color="#2329D6">
                                                         <title>Visible (eye)</title>
                                                         <path
                                                             d="M22 12C22 12 19 18 12 18C5 18 2 12 2 12C2 12 5 6 12 6C19 6 22 12 22 12Z" />
@@ -352,7 +366,6 @@
         </div>
     </section>
     <!-- related_products_section - end-->
-
 
     <div class="modal fade" id="quickview_popup{{ $products->id }}" aria-labelledby="exampleModalToggleLabel2"
         tabindex="-1" style="display: none;" aria-hidden="true">
@@ -398,7 +411,6 @@
                                             <h3 class="title_text">Options <span class="underline"></span></h3>
                                             <form action="#">
                                                 <div class="row">
-
                                                     <div class="col col-md-6">
                                                         <div class="select_option clearfix">
                                                             <h4 class="input_title">Size *</h4>
@@ -427,10 +439,8 @@
                                                             </select>
                                                         </div>
                                                     </div>
-
                                                 </div>
-                                                <span class="repuired_text">Repuired Fiields
-                                                    *</span>
+                                                <span class="repuired_text">Repuired Fiields*</span>
                                             </form>
                                         </div>
 
@@ -452,8 +462,9 @@
                                         </div>
 
                                         <ul class="default_btns_group ul_li">
-                                            <li><a class="addtocart_btn" href="{{ route('SingleCart', $products->slug) }}">Add To
-                                                Cart</a></li>
+                                            <li><a class="addtocart_btn"
+                                                    href="{{ route('SingleCart', $products->slug) }}">Add To
+                                                    Cart</a></li>
                                             <li><a href="#!"><i class="far fa-compress-alt"></i></a></li>
                                             <li><a href="#!"><i class="fas fa-heart"></i></a>
                                             </li>
@@ -483,8 +494,7 @@
                                             </li>
                                             <li>
                                                 <a class="share" href="#!">
-                                                    <span><i class="fas fa-plus-square"></i>
-                                                        Share</span>
+                                                    <span><i class="fas fa-plus-square"></i>Share</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -497,31 +507,7 @@
             </div>
         </div>
     </div>
-    {{-- @endforeach --}}
 @endsection
-{{-- @section('footer_js')
-    <script>
-        $('.sizecheck').on('change', function(){
-            alert'Ok';
-        })
 
-        $('#color_id').change(function() {
-            let colorId = $(this).val();
-            let productId = $(this).attr('data-product');
-            $.ajax({
-                type: 'GET',
-                url: "{{ url('get-attribute') }}/" + colorId+'/'+ productId,
-                success: function(e) {
-                    if (e) {
-                        $('#sizeadd').empty();
-                        $.each(e,function(key, value){
-                            $('#sizeadd').append('<input type="radio" class="sizecheck" name="size_id" id="size" value=""><label for="size">'+value.size_id+'</label>')
-                        })
-                    } else {
-                        $('#sizeadd').empty();
-                    }
-                }
-            })
-        });
-    </script>
-@endsection --}}
+@section('footer_js')
+@endsection

@@ -54,12 +54,10 @@
                                                             <div class="col col-md-6">
                                                                 <div class="select_option clearfix">
                                                                 <h4 class="input_title">Size *</h4>
-                                                                @foreach ($attributes as $value)
                                                                     <select style="display: none;">
                                                                         <option>- Please select Size -</option>
-                                                                        <option value="">{{ $value->size_name }}</option>
+                                                                        <option value=""></option>
                                                                     </select>
-                                                                @endforeach
                                                                 </div>
                                                             </div>
                                                             <div class="col col-md-6">
@@ -393,8 +391,8 @@
                                             </div>
                                         </div>
                                         <div class="details">
-                                            <h4><a
-                                                    href="{{ route('SingleProduct', $product->slug) }}">{{ $product->product_title }}</a>
+                                            <h4>
+                                                <a href="{{ route('SingleProduct', $product->slug) }}">{{ $product->product_title }}</a>
                                             </h4>
                                             <p><a href="#">Apple MacBook Pro13.3″ Laptop with new Touch bar ID </a>
                                             </p>

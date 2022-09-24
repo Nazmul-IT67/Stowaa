@@ -61,14 +61,14 @@
                 <div class="sidebar-menu-wrapper">
                     <div class="cart_sidebar">
                         <button type="button" class="close_btn"><i class="fal fa-times"></i></button>
-                        {{-- @php
+                        @php
                             $total=0;
                         @endphp
                         <ul class="cart_items_list ul_li_block mb_30 clearfix">
                             @foreach (cart() as $crt)
                             <li>
                                 <div class="item_image">
-                                    <img src="{{ asset('Product/Thumbnail/' . $crt->product->created_at->format('Y/m/') . $crt->product->id . '/' . $crt->product->thumbnail) }}" alt="image_not_found">
+                                    <img src="{{ asset('Product/Thumbnail/' . $crt->product->created_at->format('Y/m/') . $crt->product->id . '/' . $crt->product->thumbnail) }}">
                                 </div>
                                 <div class="item_content">
                                     <h4 class="item_title">{{ $crt->product->product_title }}</h4>
@@ -80,16 +80,12 @@
                                 <button type="button" class="remove_btn"><i class="fal fa-trash-alt"></i></button>
                             </li>
                             @endforeach
-                        </ul> --}}
+                        </ul>
 
                         <ul class="total_price ul_li_block mb_30 clearfix">
                             <li>
                                 <span>Subtotal:</span>
-                                {{-- <span>${{ $total }}</span> --}}
-                            </li>
-                            <li>
-                                <span>Vat 5%:</span>
-                                <span>$4.5</span>
+                                <span>${{ $total }}</span>
                             </li>
                             <li>
                                 <span>Discount 20%:</span>
@@ -97,7 +93,7 @@
                             </li>
                             <li>
                                 <span>Total:</span>
-                                {{-- <span>${{ $total }}</span> --}}
+                                <span>${{ $total }}</span>
                             </li>
                         </ul>
 
@@ -201,7 +197,7 @@
                                     <li>
                                         <span class="cart_icon">
                                             <i class="icon icon-ShoppingCart"></i>
-                                            {{-- <small class="cart_counter">{{ $crt->count() }}</small> --}}
+                                            <small class="cart_counter">3</small>
                                         </span>
                                     </li>
                                 </ul>

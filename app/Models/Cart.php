@@ -12,4 +12,13 @@ class Cart extends Model
     function product(){
         return $this->belongsTo(Products::class,'product_id');
     }
+
+    function color(){
+        return $this->belongsTo(Color::class,'color_id');
+    }
+
+    function size(){
+        return $this->belongsTo(Size::class,'size_id');
+    }
+
 }
